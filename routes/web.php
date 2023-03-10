@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\EncuestaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('encuestas',[EncuestaController::class,'index'])->name('encuestas.index');
-Route::get('encuestas/create',[EncuestaController::class,'create'])->name('encuestas.create');
-Route::post('encuestas', [EncuestaController::class,'store'])->name('encuestas.store');
-
-Route::get('encuestas/{encuesta}',[EncuestaController::class,'show'])->name('encuestas.show');
-
-
+Route::get('/', function () {
+    return view('welcome');
+});
