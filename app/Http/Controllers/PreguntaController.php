@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\StorePregunta;
+use App\Models\Pregunta;
+use Illuminate\Http\Request;
+
+class PreguntaController extends Controller
+{
+    public function index(){
+        $preguntas = Pregunta::orderBy('id','desc')->paginate();
+
+
+        
+        return view('preguntas.index', compact('preguntas'));
+    }
+
+    public function create(){
+        return view('preguntas.create');
+    }
+
+    public function store(StorePregunta $request){     
+        
+        
+        $pregunta = Pregunta::create($request->all());
+
+        // return $pregunta;
+
+        return redirect()->route('preguntas.show', $pregunta);
+    }
+
+    public function show (Pregunta $pregunta){
+        return view('preguntas.show', compact('pregunta'));
+    }
+
+    public function edit(Pregunta $pregunta){
+        
+        return view('preguntas.edit', compact('pregunta'));
+    }
+
+}

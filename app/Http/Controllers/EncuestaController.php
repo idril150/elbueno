@@ -21,22 +21,6 @@ class EncuestaController extends Controller
         return view('encuestas.create');
     }
 
-    public function store(StoreEncuesta $request){     
-        
-        $encuesta = Encuesta::create($request->all());
-
-        return redirect()->route('encuestas.show', $encuesta);
-    }
-
-    public function show (Encuesta $encuesta){
-        return view('encuestas.show', compact('encuesta'));
-    }
-
-    public function edit(Encuesta $encuesta){
-        
-        return view('encuestas.edit', compact('encuesta'));
-    }
-
     public function update(Request $request,Encuesta $encuesta){
 
         $request->validate([
