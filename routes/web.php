@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EncuestaController;
 use App\Http\Controllers\PreguntaController;
+use App\Http\Controllers\RespuestaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () {
 Route::resource('encuestas', EncuestaController::class); 
 
 Route::resource('preguntas', PreguntaController::class);
+
+Route::resource('respuestas', RespuestaController::class);
 
 
 Route::get('/dashboard', function () {
