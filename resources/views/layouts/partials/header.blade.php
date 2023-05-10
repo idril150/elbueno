@@ -6,11 +6,15 @@
                 
                 
             </li> --}}
-            <li><a href="{{route('encuestas.index')}}" class="{{request()->routeIs('encuestas.*')? 'active' : ''}}">Encuestas</a>
+            <li>
+                <a href="{{route('encuestas.index')}}" class="{{request()->routeIs('encuestas.*')? 'active' : ''}}">Encuestas</a>
                 
-            
-
+                
             </li>
+            <li>
+                <a href="{{route('preguntas.index')}}" class="{{request()->routeIs('encuestas.*')? 'active' : ''}}">Preguntas</a>
+            </li>
+            
             {{-- <li><a href="{{route('nosotros')}}" class="{{request()->routeIs('nosotros')? 'active' : ''}}">nosotros</a>
                 
             </li>

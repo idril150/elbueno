@@ -9,33 +9,33 @@ use Illuminate\Http\Request;
 class RespuestaController extends Controller
 {
     public function index(){
-        $preguntas = Respuesta::orderBy('id','desc')->paginate();
+        $respuestas = Respuesta::orderBy('id','desc')->paginate();
 
 
         
-        return view('preguntas.index', compact('preguntas'));
+        return view('respuestas.index', compact('respuestas'));
     }
 
     public function create(){
-        return view('preguntas.create');
+        return view('respuestas.create');
     }
 
     public function store(StoreRespuesta $request){     
         
         
-        $pregunta = Respuesta::create($request->all());
+        $respuesta = Respuesta::create($request->all());
 
-        // return $pregunta;
+        // return $respuesta;
 
-        return redirect()->route('preguntas.show', $pregunta);
+        return redirect()->route('respuestas.show', $respuesta);
     }
 
-    public function show (Respuesta $pregunta){
-        return view('preguntas.show', compact('pregunta'));
+    public function show (Respuesta $respuesta){
+        return view('respuestas.show', compact('respuesta'));
     }
 
-    public function edit(Respuesta $pregunta){
+    public function edit(Respuesta $respuesta){
         
-        return view('preguntas.edit', compact('pregunta'));
+        return view('respuestas.edit', compact('respuesta'));
     }
 }
