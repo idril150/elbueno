@@ -24,9 +24,11 @@
         @method('delete')
         <button type="submit">Eliminar</button>
 
-        @foreach($encuesta->preguntas as $pregunta)
+        @foreach ($preguntas as $pregunta)
         <li>{{ $pregunta->texto }}</li>
     @endforeach
+
+        
     </form>
 
 @endsection
