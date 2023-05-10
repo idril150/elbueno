@@ -7,7 +7,7 @@
     <a href="{{route('encuestas.create')}}">crear encuesta</a>
     <ul>
         @foreach($encuestas as $encuesta)
-    <h2>{{ $encuesta->name }}</h2>
+        <a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a>
     <ul>
         @foreach($encuesta->preguntas as $pregunta)
             <li>{{ $pregunta->texto }}</li>
