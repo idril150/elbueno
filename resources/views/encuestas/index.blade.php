@@ -9,9 +9,6 @@
         @foreach($encuestas as $encuesta)
         <a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a>
     <ul>
-        @foreach($encuesta->preguntas as $pregunta)
-            <li>{{ $pregunta->texto }}</li>
-        @endforeach
     </ul>
 @endforeach
     </ul>

@@ -40,7 +40,6 @@
             <input type="checkbox" name="estado" value="0">
         </label>
         <br>
-        <a href="{{route('preguntas.index')}}">agregar pregunta</a>
         <button type="submit">enviar formulario</button>
     </form>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePregunta;
+use App\Models\Encuesta;
 use App\Models\Pregunta;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,8 @@ class PreguntaController extends Controller
         return view('preguntas.index', compact('preguntas'));
     }
 
-    public function create(){
-        return view('preguntas.create');
+    public function create($encuesta_id){
+        return view('preguntas.create', compact('encuesta_id'));
     }
 
     public function store(StorePregunta $request){     
@@ -25,9 +26,9 @@ class PreguntaController extends Controller
         
         $pregunta = Pregunta::create($request->all());
 
-        // return $pregunta;
+        //  return $pregunta;
 
-        return redirect()->route('preguntas.show', $pregunta);
+         return redirect()->route('preguntas.show', $pregunta);
     }
 
     public function show (Pregunta $pregunta){
@@ -37,6 +38,12 @@ class PreguntaController extends Controller
     public function edit(Pregunta $pregunta){
         
         return view('preguntas.edit', compact('pregunta'));
+    }
+
+    public function update(Request $request,Pregunta $pregunta){
+
+        $pregunta->update($request->all());
+        return redirect()->route('preguntas.show', $pregunta);
     }
 
 }

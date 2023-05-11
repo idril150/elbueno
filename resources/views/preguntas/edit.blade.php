@@ -17,12 +17,12 @@
         <br>
         <label>
             tipo abierta:
-            <input type="checkbox" name="estado" value="1">
+            <input type="checkbox" name="tipo" value="1">
         </label>
         <br>
         <label>
             tipo cerrada:
-            <input type="checkbox" name="estado" value="0">
+            <input type="checkbox" name="tipo" value="0">
         </label>
         <br>
         <br>

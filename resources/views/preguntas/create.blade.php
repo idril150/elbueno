@@ -26,14 +26,6 @@
         </label>
         <br>
 
-
-        <br>
-        <label>
-            llave foranea:
-            <input type="text" name="encuesta_id" value="{{old('encuesta_id')}}">
-        </label>
-        <br>
-
         <a href="{{route('preguntas.index')}}">agregar encuestas</a>
         <button type="submit">enviar formulario</button>
     </form>

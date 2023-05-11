@@ -24,6 +24,9 @@ Route::get('/', function () {
 Route::resource('encuestas', EncuestaController::class); 
 
 Route::resource('preguntas', PreguntaController::class);
+Route::get('preguntas/create/{id_encuesta}', [PreguntaController::class, 'create'])->name('preguntas.create');
+
+
 
 Route::resource('respuestas', RespuestaController::class);
 

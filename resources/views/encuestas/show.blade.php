@@ -26,7 +26,10 @@
 
         @foreach ($preguntas as $pregunta)
         <li>{{ $pregunta->texto }}</li>
+        <a href="{{route('preguntas.edit',$pregunta)}}">Editar pregunta</a>
     @endforeach
+<br><br>
+    <a href="{{ route('preguntas.create', $encuesta)}}">agregar pregunta</a>
 
         
     </form>
