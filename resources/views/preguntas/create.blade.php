@@ -25,6 +25,7 @@
             <input type="checkbox" name="tipo" value="0">
         </label>
         <br>
+        <input type="hidden" name="encuesta_id" value="{{ $encuesta_id }}">
 
         <a href="{{route('preguntas.index')}}">agregar encuestas</a>
         <button type="submit">enviar formulario</button>

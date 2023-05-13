@@ -26,12 +26,11 @@ class EncuestaController extends Controller
         return redirect()->route('encuestas.show', $encuesta);
     }
 
-    public function show($id)
-{
+    public function show($id){
     $encuesta = Encuesta::findOrFail($id);
     $preguntas = $encuesta->preguntas;
     return view('encuestas.show', compact('encuesta', 'preguntas'));
-}
+    }
 
     public function edit(Encuesta $encuesta){
         

@@ -9,15 +9,15 @@ use Illuminate\Http\Request;
 class RespuestaController extends Controller
 {
     public function index(){
-        $respuestas = Respuesta::orderBy('id','desc')->paginate();
-
-
-        
+        $respuestas = Respuesta::orderBy('id','desc')->paginate();        
         return view('respuestas.index', compact('respuestas'));
     }
 
-    public function create(){
-        return view('respuestas.create');
+
+    public function create($pregunta_id){
+        return $pregunta_id;
+        //return view('respuestas.create');
+        //return view('respuestas.create', compact('respuesta_id'));
     }
 
     public function store(StoreRespuesta $request){     
@@ -37,5 +37,11 @@ class RespuestaController extends Controller
     public function edit(Respuesta $respuesta){
         
         return view('respuestas.edit', compact('respuesta'));
+    }
+
+    public function update(Request $request,respuesta $respuesta){
+
+        $respuesta->update($request->all());
+        return redirect()->route('respuestas.show', $respuesta);
     }
 }

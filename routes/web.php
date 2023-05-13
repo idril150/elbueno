@@ -28,7 +28,13 @@ Route::get('preguntas/create/{id_encuesta}', [PreguntaController::class, 'create
 
 
 
+Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'create'])->name('respuestas.create');
+
+
 Route::resource('respuestas', RespuestaController::class);
+
+
+
 
 
 Route::get('/dashboard', function () {

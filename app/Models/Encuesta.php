@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\encuestasFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +13,7 @@ class Encuesta extends Model
     {
         return $this->hasMany(Pregunta::class);
     }
+   
 
      protected $guarded = [];
 }

@@ -3,44 +3,23 @@
 @section('title', 'create')
 
 @section('content')
-    <h1>en esta pagina se puede crear un formulario</h1>
-    <a href="{{route('encuestas.index')}}"><-- volver a las encuestas</a>
+    <h1>en esta pagina se puede crear una respuesta</h1>
+    <a href="{{route('respuestas.index')}}"><-- volver a las respuesta</a>
     <br>
-    <form action="{{route('encuestas.store')}}" method="POST">
+    <form action="{{route('respuestas.store')}}" method="POST">
         @csrf
         <label>
-            Nombre:
-            <input type="text" name="name" value="{{old('name')}}">
+            inciso:
+            <input type="text" name="inciso" value="{{old('inciso')}}">
         </label>
+        <br>
+        <label>
+            texto:
+            <input type="text" name="texto" value="{{old('texto')}}">
+        </label>
+        {{-- <input type="hidden" name="pregunta_id" value="{{ $pregunta_id }}"> --}}
 
-        @error('name')
-            <br>
-            <small>{{$message}}</small>
-            <br>
-        @enderror
-
-        <br>
-        <label>
-            periodo:
-            <input type="text" name="periodo" value="{{old('periodo')}}">
-        </label>
-        @error('periodo')
-            <br>
-            <small>{{$message}}</small>
-            <br>
-        @enderror
-        <br>
-        <label>
-            estado:
-            <input type="checkbox" name="estado" value="1">
-        </label>
-        <br>
-        <label>
-            estado:
-            <input type="checkbox" name="estado" value="0">
-        </label>
-        <br>
-        <a href="{{route('respuestas.index')}}">agregar respuesta</a>
         <button type="submit">enviar formulario</button>
     </form>
+    
 @endsection

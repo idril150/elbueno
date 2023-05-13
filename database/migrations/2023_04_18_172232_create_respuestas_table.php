@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer('inciso');
             $table->text('texto');
-            $table->unsignedBigInteger('preguntas_id');
+            $table->unsignedBigInteger('pregunta_id');
             $table->timestamps();
             
-            $table->foreign('preguntas_id')->references('id')->on('preguntas');
+            $table->foreign('pregunta_id')->references('id')->on('preguntas');
         });
     }
 

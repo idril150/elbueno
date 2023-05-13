@@ -25,9 +25,21 @@
         <button type="submit">Eliminar</button>
 
         @foreach ($preguntas as $pregunta)
-        <li>{{ $pregunta->texto }}</li>
-        <a href="{{route('preguntas.edit',$pregunta)}}">Editar pregunta</a>
-    @endforeach
+        <h4>{{ $pregunta->texto }}</h4>        
+        <a href="{{route('preguntas.edit',$pregunta->id)}}">editar pregunta</a>
+        <ul>
+        @foreach ($pregunta->respuestas as $respuesta)
+            <li>{{ $respuesta->texto }}</li>
+            <a href="{{route('respuestas.edit',$respuesta->id)}}">editar respuesta</a>
+        @endforeach 
+        </ul>
+        <h4>{{$pregunta->id}}</h4>
+        {{-- <a href="{{route('respuestas.create',$pregunta)}}">agregar respuesta</a> --}}
+        {{-- <a href="{{ route('respuestas.create', $pregunta->id) }}">agregar respuesta</a> --}}
+        <a href="{{ route('respuestas.create', $pregunta) }}">agregar respuesta</a>
+
+
+@endforeach
 <br><br>
     <a href="{{ route('preguntas.create', $encuesta)}}">agregar pregunta</a>
 
