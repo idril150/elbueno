@@ -34,9 +34,13 @@
         @endforeach 
         </ul>
         <h4>{{$pregunta->id}}</h4>
-        {{-- <a href="{{route('respuestas.create',$pregunta)}}">agregar respuesta</a> --}}
+
+
+        <a href="{{route('respuestas.createe',$pregunta->id)}}">crear respuesta</a>
+
+
         {{-- <a href="{{ route('respuestas.create', $pregunta->id) }}">agregar respuesta</a> --}}
-        <a href="{{ route('respuestas.create', $pregunta) }}">agregar respuesta</a>
+        {{-- <a href="{{ route('respuestas.create', $pregunta) }}">agregar respuesta</a> --}}
 
 
 @endforeach

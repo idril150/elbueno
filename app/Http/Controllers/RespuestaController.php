@@ -15,9 +15,9 @@ class RespuestaController extends Controller
 
 
     public function create($pregunta_id){
-        return $pregunta_id;
+        
         //return view('respuestas.create');
-        //return view('respuestas.create', compact('respuesta_id'));
+        return view('respuestas.create', compact('pregunta_id'));
     }
 
     public function store(StoreRespuesta $request){     

@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        // Encuesta::factory(5)->create();
-        // Pregunta::factory(50)->create();
-        // Respuesta::factory(300)->create();
+         Encuesta::factory(5)->create();
+         Pregunta::factory(50)->create();
+         Respuesta::factory(300)->create();
     }
 }

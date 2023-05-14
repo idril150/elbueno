@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EncuestaController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\RespuestaController;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,13 +24,12 @@ Route::get('/', function () {
 
 Route::resource('encuestas', EncuestaController::class); 
 
-Route::resource('preguntas', PreguntaController::class);
+Route::resource('preguntas', PreguntaController::class)->except(['Create']);
 Route::get('preguntas/create/{id_encuesta}', [PreguntaController::class, 'create'])->name('preguntas.create');
 
 
 
-Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'create'])->name('respuestas.create');
-
+Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'create'])->name('respuestas.createe');
 
 Route::resource('respuestas', RespuestaController::class);
 

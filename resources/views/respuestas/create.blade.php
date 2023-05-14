@@ -17,7 +17,7 @@
             texto:
             <input type="text" name="texto" value="{{old('texto')}}">
         </label>
-        {{-- <input type="hidden" name="pregunta_id" value="{{ $pregunta_id }}"> --}}
+        <input type="hidden" name="pregunta_id" value="{{ $pregunta_id }}">
 
         <button type="submit">enviar formulario</button>
     </form>
