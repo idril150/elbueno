@@ -43,7 +43,8 @@ class PreguntaController extends Controller
     public function update(Request $request,Pregunta $pregunta){
 
         $pregunta->update($request->all());
-        return redirect()->route('preguntas.show', $pregunta);
+        // return $pregunta;
+        return redirect()->route('encuestas.show', $pregunta->encuesta_id);
     }
 
 }
