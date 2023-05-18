@@ -28,7 +28,7 @@
         <h4>{{ $pregunta->texto }}</h4>        
         <a href="{{route('preguntas.edit',$pregunta->id)}}">editar pregunta</a>
         <ul>
-        @foreach ($pregunta->respuestas as $respuesta)
+        @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
             <li>{{ $respuesta->texto }}</li>
             <a href="{{route('respuestas.edit',$respuesta->id)}}">editar respuesta</a>
         @endforeach 
