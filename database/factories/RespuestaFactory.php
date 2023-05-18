@@ -18,7 +18,8 @@ class RespuestaFactory extends Factory
     {
         return [
                 'inciso' => $this->faker->randomNumber(1,4),
-                'texto' => $this->faker->sentence(),                
+                'texto' => $this->faker->sentence(),  
+                'estado' => $this->faker->randomElement([0,1]),              
                 'pregunta_id' => $this->faker->numberBetween(1, 50),
         ];
     }

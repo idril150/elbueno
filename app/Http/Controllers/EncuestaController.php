@@ -11,7 +11,7 @@ use App\Http\Requests\StoreEncuesta;
 class EncuestaController extends Controller
 {
     public function index(){
-        $encuestas = Encuesta::with('preguntas')->paginate();
+        $encuestas = Encuesta::where('estado', 1)->orderBy('id', 'desc')->paginate();
         return view('encuestas.index', compact('encuestas'));
     }
 

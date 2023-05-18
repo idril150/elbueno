@@ -19,6 +19,7 @@ class PreguntaFactory extends Factory
         return [
                 'texto' => $this->faker->sentence(),
                 'tipo' => $this->faker->randomElement([0,1]),
+                'estado' => $this->faker->randomElement([0,1]),
                 'encuesta_id' => $this->faker->numberBetween(1, 5),
         ];
     }

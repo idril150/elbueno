@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('inciso');
             $table->text('texto');
+            $table->boolean('estado');
             $table->unsignedBigInteger('pregunta_id');
             $table->timestamps();
             

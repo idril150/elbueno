@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('texto');
             $table->boolean('tipo');
+            $table->boolean('estado');
             $table->unsignedBigInteger('encuesta_id');
             $table->timestamps();
             
