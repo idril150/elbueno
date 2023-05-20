@@ -9,11 +9,6 @@
     <form action="{{route('respuestas.update', $respuesta)}}" method="post">
         @csrf
         @method('put')
-
-        <label>
-            inciso:
-            <input type="text" name="inciso" value="{{old('inciso',$respuesta->inciso)}}">
-        </label>
         <br>
         <label>
             texto:

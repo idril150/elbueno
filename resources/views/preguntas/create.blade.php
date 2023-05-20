@@ -27,8 +27,7 @@
         <br>
         <input type="hidden" name="encuesta_id" value="{{ $encuesta_id }}">
         <br>
-        <label>
-            
+        <label>            
             <input type="hidden" name="estado" value="1">
         </label>
         <br>

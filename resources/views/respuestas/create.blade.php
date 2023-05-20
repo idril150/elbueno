@@ -8,10 +8,6 @@
     <br>
     <form action="{{route('respuestas.store')}}" method="POST">
         @csrf
-        <label>
-            inciso:
-            <input type="text" name="inciso" value="{{old('inciso')}}">
-        </label>
         <br>
         <label>
             texto:
@@ -19,8 +15,7 @@
         </label>
         <input type="hidden" name="pregunta_id" value="{{ $pregunta_id }}">
         <br>
-        <label>
-            estado activa:
+        <label>            
             <input type="hidden" name="estado" value="1">
         </label>
         {{-- <br>

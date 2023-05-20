@@ -49,8 +49,8 @@ class EncuestaController extends Controller
         return redirect()->route('encuestas.show', $encuesta);
     }
 
-    public function destroy(Encuesta $encuesta){
-        $encuesta->delete();
-        return redirect()->route('encuestas.index');
-    }
+    // public function destroy(Encuesta $encuesta){
+    //     $encuesta->delete();
+    //     return redirect()->route('encuestas.index');
+    // }
 }

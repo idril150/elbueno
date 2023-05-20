@@ -4,6 +4,7 @@
 
 @section('content')
     <h1>bienvenido a la encuesta: {{$encuesta->name}}</h1>
+    
     <a href="{{route('encuestas.index')}}"><-- volver a las encuestas</a>
     
     <p><strong>periodo: </strong>{{$encuesta->periodo}}</p>
@@ -31,7 +32,7 @@
         
 
 
-
+{{-- 
     @if ($pregunta->estado == 1)
     <form action="{{ route('preguntas.update', $pregunta->id) }}" method="POST">
         @csrf
@@ -48,14 +49,17 @@
         <input type="hidden" name="estado" value="1">
         <button type="submit">Activar</button>
     </form>
-@endif
+@endif --}}
   
         
         <ul>
+        <ol type="a">
         @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
+        
             <li>{{ $respuesta->texto }}</li>
             <a href="{{route('respuestas.edit',$respuesta->id)}}">editar respuesta</a>
         @endforeach 
+        </ol>
         </ul>
         <h4>{{$pregunta->id}}</h4>
 
