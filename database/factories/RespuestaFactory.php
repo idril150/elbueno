@@ -17,7 +17,7 @@ class RespuestaFactory extends Factory
     public function definition(): array
     {
         return [
-                'inciso' => $this->faker->randomNumber(1,4),
+                // 'inciso' => $this->faker->randomNumber(1,4),
                 'texto' => $this->faker->sentence(),  
                 'estado' => $this->faker->randomElement([0,1]),              
                 'pregunta_id' => $this->faker->numberBetween(1, 50),

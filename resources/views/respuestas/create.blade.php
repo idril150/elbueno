@@ -21,13 +21,13 @@
         <br>
         <label>
             estado activa:
-            <input type="checkbox" name="estado" value="1">
+            <input type="hidden" name="estado" value="1">
         </label>
-        <br>
+        {{-- <br>
         <label>
             estado inactiva:
             <input type="checkbox" name="estado" value="0">
-        </label>
+        </label> --}}
         <br>
 
         <button type="submit">enviar formulario</button>

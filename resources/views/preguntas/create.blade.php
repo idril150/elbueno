@@ -28,15 +28,15 @@
         <input type="hidden" name="encuesta_id" value="{{ $encuesta_id }}">
         <br>
         <label>
-            estado activo:
-            <input type="checkbox" name="estado" value="1">
+            
+            <input type="hidden" name="estado" value="1">
         </label>
         <br>
-        <label>
+        {{-- <label>
             estado inactivo:
             <input type="checkbox" name="estado" value="0">
         </label>
-        <br>
+        <br> --}}
 
         <a href="{{route('preguntas.index')}}">agregar encuestas</a>
         <button type="submit">enviar formulario</button>

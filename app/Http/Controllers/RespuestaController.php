@@ -24,10 +24,11 @@ class RespuestaController extends Controller
         
         
         $respuesta = Respuesta::create($request->all());
-
+        $pregunta = $respuesta->pregunta;
+        $encuestaId = $pregunta->encuesta_id;
         // return $respuesta;
 
-        return redirect()->route('respuestas.show', $respuesta);
+        return redirect()->route('encuestas.show', $encuestaId);
     }
 
     public function show (Respuesta $respuesta){
@@ -39,9 +40,14 @@ class RespuestaController extends Controller
         return view('respuestas.edit', compact('respuesta'));
     }
 
-    public function update(Request $request,respuesta $respuesta){
-
-        $respuesta->update($request->all());
-        return redirect()->route('respuestas.show', $respuesta);
+    public function update(Request $request, Respuesta $respuesta){
+    $respuesta->update($request->all());
+    
+    $pregunta = $respuesta->pregunta;
+    $encuestaId = $pregunta->encuesta_id;
+    
+    return redirect()->route('encuestas.show', $encuestaId);
     }
+
+    
 }

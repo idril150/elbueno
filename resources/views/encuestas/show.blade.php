@@ -26,7 +26,31 @@
 
         @foreach ($preguntas as $pregunta)
         <h4>{{ $pregunta->texto }}</h4>        
+       
         <a href="{{route('preguntas.edit',$pregunta->id)}}">editar pregunta</a>
+        
+
+
+
+    @if ($pregunta->estado == 1)
+    <form action="{{ route('preguntas.update', $pregunta->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <input type="hidden" name="texto" value="{{ $pregunta->texto }}">
+        <input type="hidden" name="tipo" value="{{ $pregunta->tipo }}">
+        <input type="hidden" name="estado" value="0">
+        <button type="submit">Desactivar</button>
+    </form>
+@else
+    <form action="{{ route('preguntas.update', $pregunta->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <input type="hidden" name="estado" value="1">
+        <button type="submit">Activar</button>
+    </form>
+@endif
+  
+        
         <ul>
         @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
             <li>{{ $respuesta->texto }}</li>
