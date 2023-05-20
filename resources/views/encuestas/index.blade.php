@@ -3,6 +3,7 @@
 @section('title', 'Encuestas')
 
 @section('content')
+
     <h1>listado de formularios</h1>
     <a href="{{route('encuestas.create')}}">crear encuesta</a>
     <ul>
