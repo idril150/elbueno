@@ -44,4 +44,7 @@ class RespuestaController extends Controller
         $respuesta->update($request->all());
         return redirect()->route('respuestas.show', $respuesta);
     }
+
+   
+
 }
