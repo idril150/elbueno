@@ -21,6 +21,16 @@
             <li><a href="{{route('contactanos.index')}}" class="{{request()->routeIs('contactanos.index')? 'active' : ''}}">contactanos</a>
                 
             </li> --}}
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <x-dropdown-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-dropdown-link>
+            </form>
             
         </ul>
     </nav>
