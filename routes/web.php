@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EncuestaController;
 use App\Http\Controllers\PreguntaController;
+use App\Http\Controllers\responderController;
 use App\Http\Controllers\RespuestaController;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +37,7 @@ Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'crea
 Route::resource('respuestas', RespuestaController::class);
 
 
-
+Route::resource('responders', responderController::class);
 
 
 Route::get('/dashboard', function () {

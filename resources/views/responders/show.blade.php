@@ -15,9 +15,8 @@
         else {
             echo "inactivo";
         }
-    
     @endphp</p>
-    <p><strong>carrera: </strong>{{$encuesta->carrera}}</p>
+    
     <br>
     <a href="{{route('encuestas.edit',$encuesta)}}">Editar encuesta</a>
 
