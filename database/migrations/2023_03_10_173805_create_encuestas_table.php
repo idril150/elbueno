@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('periodo');
+            $table->string('carrera');
             $table->boolean('estado');
             $table->timestamps();
         });

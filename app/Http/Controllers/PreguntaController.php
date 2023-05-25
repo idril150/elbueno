@@ -28,7 +28,7 @@ class PreguntaController extends Controller
 
         //  return $pregunta;
 
-         return redirect()->route('preguntas.show', $pregunta);
+        return redirect()->route('encuestas.show', $pregunta->encuesta_id);
     }
 
     public function show (Pregunta $pregunta){
@@ -42,9 +42,9 @@ class PreguntaController extends Controller
 
     public function update(Request $request,Pregunta $pregunta){
 
-        $pregunta->update($request->all());
-        // return $pregunta;
-        return redirect()->route('encuestas.show', $pregunta->encuesta_id);
+         $pregunta->update($request->all());
+        
+         return redirect()->route('encuestas.show', $pregunta->encuesta_id);
     }
 
 }

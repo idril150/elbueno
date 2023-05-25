@@ -28,7 +28,7 @@ class EncuestaController extends Controller
 
     public function show($id){
     $encuesta = Encuesta::findOrFail($id);
-    $preguntas = $encuesta->preguntas;
+    $preguntas = $encuesta->preguntas->where('estado', 1);
     return view('encuestas.show', compact('encuesta', 'preguntas'));
     }
 
@@ -49,8 +49,8 @@ class EncuestaController extends Controller
         return redirect()->route('encuestas.show', $encuesta);
     }
 
-    public function destroy(Encuesta $encuesta){
-        $encuesta->delete();
-        return redirect()->route('encuestas.index');
-    }
+    // public function destroy(Encuesta $encuesta){
+    //     $encuesta->delete();
+    //     return redirect()->route('encuestas.index');
+    // }
 }

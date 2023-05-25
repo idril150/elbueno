@@ -9,17 +9,23 @@
     <form action="{{route('respuestas.update', $respuesta)}}" method="post">
         @csrf
         @method('put')
-
-        <label>
-            inciso:
-            <input type="text" name="inciso" value="{{old('inciso',$respuesta->inciso)}}">
-        </label>
         <br>
         <label>
             texto:
             <input type="text" name="texto" value="{{old('texto',$respuesta->texto)}}">
         </label>
        
+        <br>
+        <br>
+        <label>
+            estado activo:
+            <input type="checkbox" name="estado" value="1">
+        </label>
+        <br>
+        <label>
+            estado inactivo:
+            <input type="checkbox" name="estado" value="0">
+        </label>
         <br>
         <br>
         <button type="submit">actualizar formulario</button>

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('respuestas', function (Blueprint $table) {
             $table->id();
-            $table->integer('inciso');
             $table->text('texto');
             $table->boolean('estado');
             $table->unsignedBigInteger('pregunta_id');

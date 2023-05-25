@@ -19,6 +19,7 @@ class EncuestaFactory extends Factory
         return [
             'name' => $this->faker->sentence(),
             'estado' => $this->faker->randomElement([0,1]),
+            'carrera' => $this->faker->randomElement(['sistemas','industrial','gestion empresarial']),
             'periodo' => $this->faker->sentence(),
 
         ];

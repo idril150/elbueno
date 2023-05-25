@@ -31,12 +31,12 @@
         @enderror
         <br>
         <label>
-            estado:
+            estado activo:
             <input type="checkbox" name="estado" value="1">
         </label>
         <br>
         <label>
-            estado:
+            estado inactivo:
             <input type="checkbox" name="estado" value="0">
         </label>
         <br>
