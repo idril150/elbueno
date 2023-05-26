@@ -24,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::resource('encuestas', EncuestaController::class); 
+Route::post('encuestas/{encuesta}', [EncuestaController::class, 'cambiarEstado'])->name('encuestas.cambiarEstado');
 
 Route::resource('preguntas', PreguntaController::class)->except(['Create']);
 Route::get('preguntas/create/{id_encuesta}', [PreguntaController::class, 'create'])->name('preguntas.create');

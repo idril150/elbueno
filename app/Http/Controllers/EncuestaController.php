@@ -37,14 +37,17 @@ class EncuestaController extends Controller
         return view('encuestas.edit', compact('encuesta'));
     }
 
+    public function cambiarEstado(Encuesta $encuesta, Request $request){
+        $encuesta->estado = $request->estado;
+        $encuesta->save();
+        return redirect()->route('encuestas.index', $encuesta);
+    }
     public function update(Request $request,Encuesta $encuesta){
-
         $request->validate([
             'name' => 'required',
             'periodo' => 'required',
             'estado' => 'required'
         ]);
-        
         $encuesta->update($request->all());
         return redirect()->route('encuestas.show', $encuesta);
     }

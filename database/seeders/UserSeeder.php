@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'victor',
             'email' => 'victor@admin.com',
             'email_verified_at' => now(),
+            'carrera' => 'sistemas',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ])-> assignRole('admin');
@@ -25,6 +26,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Jorge',
             'email' => 'Jorge@manager.com',
+            'carrera' => 'sistemas',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
@@ -34,6 +36,7 @@ class UserSeeder extends Seeder
             'name' => 'mairo',
             'email' => 'mairo@manager.com',
             'email_verified_at' => now(),
+            'carrera' => 'sistemas',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ])-> assignRole('user');
