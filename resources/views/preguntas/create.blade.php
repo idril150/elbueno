@@ -31,12 +31,6 @@
             <input type="hidden" name="estado" value="1">
         </label>
         <br>
-        {{-- <label>
-            estado inactivo:
-            <input type="checkbox" name="estado" value="0">
-        </label>
-        <br> --}}
-
         <a href="{{route('preguntas.index')}}">agregar encuestas</a>
         <button type="submit">enviar formulario</button>
     </form>
