@@ -8,14 +8,8 @@
     <a href="{{route('encuestas.create')}}">crear encuesta</a>
     <ul>
         @foreach($encuestas as $encuesta)
-        <a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}} {{ $encuesta->estado }}</a>
         <a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a>
         
-        <form action="{{ route('encuestas.cambiarEstado', $encuesta->id) }}" method="POST">
-            @csrf
-                <input type="hidden" name="estado" value="0">        
-            <button type="submit">Desactivar</button>
-        </form>
     <ul>
     </ul>
     <form action="{{ route('encuestas.cambiarEstado', $encuesta->id) }}" method="POST">
