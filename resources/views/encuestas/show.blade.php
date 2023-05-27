@@ -48,9 +48,6 @@
         @endforeach 
         </ol>
         </ul>
-        <h4>{{$pregunta->id}}</h4>
-
-
         <a href="{{route('respuestas.createe',$pregunta->id)}}">crear respuesta</a>
 
 
