@@ -41,6 +41,7 @@
             <form action="{{ route('respuestas.cambiarEstado', $respuesta->id) }}" method="POST">
                 @csrf
                 @method('put')
+
                     <input type="hidden" name="estado" value="0">        
                 <button type="submit">Desactivar</button>
             </form>
