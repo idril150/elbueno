@@ -29,15 +29,13 @@
             <small>{{$message}}</small>
             <br>
         @enderror
-        <br>
         <label>
-            estado activo:
-            <input type="checkbox" name="estado" value="1">
+            <input type="hidden" name="estado" value="1">
         </label>
         <br>
-        <label>
-            estado inactivo:
-            <input type="checkbox" name="estado" value="0">
+        <label >
+            Area
+            <input type="text" name="carrera" value="{{old('carrera')}}">
         </label>
         <br>
         <button type="submit">enviar formulario</button>

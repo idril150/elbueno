@@ -49,6 +49,12 @@ class EncuestaController extends Controller
         return redirect()->route('encuestas.show', $encuesta);
     }
 
+    public function cambiarEstado(Encuesta $encuesta, Request $request){
+        $encuesta->estado = $request->estado;
+        $encuesta->save();
+        return redirect()->route('encuestas.index', $encuesta);
+    }
+
     // public function destroy(Encuesta $encuesta){
     //     $encuesta->delete();
     //     return redirect()->route('encuestas.index');

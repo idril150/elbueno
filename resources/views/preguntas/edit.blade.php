@@ -26,16 +26,9 @@
         </label>
         <br>
         <label>
-            estado activo:
-            <input type="checkbox" name="estado" value="1">
+            <input type="hidden" name="estado" value="1">
         </label>
-        <br>
-        <label>
-            estado inactivo:
-            <input type="checkbox" name="estado" value="0">
-        </label>
-        <br>
-        <br>
+
         <br>
         <button type="submit">actualizar formulario</button>
     </form>

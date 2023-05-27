@@ -47,4 +47,10 @@ class PreguntaController extends Controller
          return redirect()->route('encuestas.show', $pregunta->encuesta_id);
     }
 
+    public function cambiarEstado(Pregunta $pregunta, Request $request){
+        $pregunta->estado = $request->estado;
+        $pregunta->save();
+        return redirect()->back();
+    }
+
 }

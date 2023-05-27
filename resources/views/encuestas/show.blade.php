@@ -21,37 +21,16 @@
     <br>
     <a href="{{route('encuestas.edit',$encuesta)}}">Editar encuesta</a>
 
-    <form action="{{route('encuestas.destroy', $encuesta)}}" method="POST">
-        @csrf
-        @method('delete')
-        <button type="submit">Eliminar</button>
 
         @foreach ($preguntas as $pregunta)
         <h4>{{ $pregunta->texto }}</h4>        
        
         <a href="{{route('preguntas.edit',$pregunta->id)}}">editar pregunta</a>
-        
-
-
-{{-- 
-    @if ($pregunta->estado == 1)
-    <form action="{{ route('preguntas.update', $pregunta->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <input type="hidden" name="texto" value="{{ $pregunta->texto }}">
-        <input type="hidden" name="tipo" value="{{ $pregunta->tipo }}">
-        <input type="hidden" name="estado" value="0">
-        <button type="submit">Desactivar</button>
-    </form>
-@else
-    <form action="{{ route('preguntas.update', $pregunta->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <input type="hidden" name="estado" value="1">
-        <button type="submit">Activar</button>
-    </form>
-@endif --}}
-  
+        <form action="{{ route('preguntas.cambiarEstado', $pregunta->id) }}" method="POST">
+            @csrf
+                <input type="hidden" name="estado" value="0">        
+            <button type="submit">Desactivar</button>
+        </form>
         
         <ul>
         <ol type="a">
@@ -59,6 +38,12 @@
         
             <li>{{ $respuesta->texto }}</li>
             <a href="{{route('respuestas.edit',$respuesta->id)}}">editar respuesta</a>
+            <form action="{{ route('respuestas.cambiarEstado', $respuesta->id) }}" method="POST">
+                @csrf
+                @method('put')
+                    <input type="hidden" name="estado" value="0">        
+                <button type="submit">Desactivar</button>
+            </form>
         @endforeach 
         </ol>
         </ul>
@@ -68,16 +53,12 @@
         <a href="{{route('respuestas.createe',$pregunta->id)}}">crear respuesta</a>
 
 
-        {{-- <a href="{{ route('respuestas.create', $pregunta->id) }}">agregar respuesta</a> --}}
-        {{-- <a href="{{ route('respuestas.create', $pregunta) }}">agregar respuesta</a> --}}
-
-
 @endforeach
 <br><br>
     <a href="{{ route('preguntas.create', $encuesta)}}">agregar pregunta</a>
 
         
-    </form>
+    
 
 @endsection
 
