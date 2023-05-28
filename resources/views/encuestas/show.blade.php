@@ -42,13 +42,15 @@
             <form action="{{ route('respuestas.cambiarEstado', $respuesta->id) }}" method="POST">
                 @csrf
                 @method('put')
-
                     <input type="hidden" name="estado" value="0">        
                 <button type="submit">Desactivar</button>
             </form>
         @endforeach 
         </ol>
         </ul>
+        <h4>{{$pregunta->id}}</h4>
+
+
         <a href="{{route('respuestas.createe',$pregunta->id)}}">crear respuesta</a>
 
 

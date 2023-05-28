@@ -52,6 +52,7 @@ class EncuestaController extends Controller
         $encuesta->save();
         return redirect()->route('encuestas.index', $encuesta);
     }
+    
 
     // public function destroy(Encuesta $encuesta){
     //     $encuesta->delete();

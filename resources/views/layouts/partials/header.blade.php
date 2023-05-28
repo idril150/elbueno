@@ -20,5 +20,6 @@
             
         </ul>
     </nav>
-    @vite('resouces/css/app.css')
+    @vite('resources/css/app.css')
+
 </header>

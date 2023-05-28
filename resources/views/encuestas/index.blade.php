@@ -4,20 +4,33 @@
 
 @section('content')
 
-    <h1 class="text-3xl font-bold underline">listado de formularios</h1>
+    <h1>listado de formularios</h1>
     <a href="{{route('encuestas.create')}}">crear encuesta</a>
     <ul>
-        <div class="container"> </div>
         @foreach($encuestas as $encuesta)
-        <a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a>
+
+        <div class="container">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-blue-100"><a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a></div>
+                <div class="bg-blue-200"><form action="{{ route('encuestas.cambiarEstado', $encuesta->id) }}" method="POST">
+                    @csrf
+                        <input type="hidden" name="estado" value="0">        
+                    <button type="submit" class="button">Desactivar</button>
+                </form></div>
+              
+            </div>
+        </div>
+
+
+
+
+
+        
+        
         
     <ul>
     </ul>
-    <form action="{{ route('encuestas.cambiarEstado', $encuesta->id) }}" method="POST">
-        @csrf
-            <input type="hidden" name="estado" value="0">        
-        <button type="submit">Desactivar</button>
-    </form>
+    
 @endforeach
     </ul>
     {{$encuestas->links()}}
