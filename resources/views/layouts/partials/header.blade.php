@@ -2,10 +2,6 @@
     <h1>Seguimiento Egresados</h1>
     <nav>
         <ul>
-            {{-- <li><a href="{{route('home')}}" class="{{request()->routeIs('home')? 'active' : ''}}">Home</a>
-                
-                
-            </li> --}}
             <li>
                 <a href="{{route('encuestas.index')}}" class="{{request()->routeIs('encuestas.*')? 'active' : ''}}">Encuestas</a>
                 
@@ -34,4 +30,5 @@
             
         </ul>
     </nav>
+    @vite('resouces/css/app.css')
 </header>

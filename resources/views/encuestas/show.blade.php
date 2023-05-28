@@ -8,6 +8,7 @@
     <a href="{{route('encuestas.index')}}"><-- volver a las encuestas</a>
     
     <p><strong>periodo: </strong>{{$encuesta->periodo}}</p>
+    <p><strong>Area</strong>{{$encuesta->carrera}}</p>
     <p><strong>estado: </strong>@php
         if ($encuesta->estado==1){
             echo "activo";

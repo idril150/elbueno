@@ -7,6 +7,7 @@
     <h1 class="text-3xl font-bold underline">listado de formularios</h1>
     <a href="{{route('encuestas.create')}}">crear encuesta</a>
     <ul>
+        <div class="container"> </div>
         @foreach($encuestas as $encuesta)
         <a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a>
         
