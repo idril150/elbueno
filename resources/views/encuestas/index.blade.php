@@ -3,13 +3,15 @@
 @section('title', 'Encuestas')
 
 @section('content')
+<div class="bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
     <br><br>
+   
     <div class="container">
         <div class="grid grid-cols-12">            
             
             <div class="col-span-8  col-start-3">
                 <div class="container">
-                    <div class="grid grid-cols-1 border-2 border-solid">
+                    <div class="grid grid-cols-1 border-2 border-dashed">
                         <div>
                             <h1>Encuestas para el seguimiento de egresados</h1><br>
                             <a href="{{route('encuestas.create')}}">crear encuesta</a>                            
@@ -20,7 +22,7 @@
 
                 @foreach($encuestas as $encuesta)
                 <div class="container">
-                    <div class="grid grid-cols-12 border-2 border-solid ">
+                    <div class="grid grid-cols-12 border-2 border-dashed ">
                         <div class="col-span-8 col-start-2">
                             <div class=" ">
                                 <li><a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a></li>
@@ -41,6 +43,7 @@
             </div>                   
         </div>
     </div>
+</div>
 
 
 @endsection

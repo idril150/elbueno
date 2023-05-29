@@ -15,7 +15,11 @@ module.exports = {
         },
 
         extend: {
-            
+            colors: {
+                'regal-blue': '#243c5a',
+              },
+        
+           
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
