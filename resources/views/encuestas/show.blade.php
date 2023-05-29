@@ -3,60 +3,107 @@
 @section('title', 'Encuesta ' . $encuesta->name)
 
 @section('content')
-    <h1>bienvenido a la encuesta: {{$encuesta->name}}</h1>
-    
-    <a href="{{route('encuestas.index')}}"><-- volver a las encuestas</a>
-    
-    <p><strong>periodo: </strong>{{$encuesta->periodo}}</p>
-    <p><strong>Area</strong>{{$encuesta->carrera}}</p>
-    <p><strong>estado: </strong>@php
-        if ($encuesta->estado==1){
-            echo "activo";
-        }
-        else {
-            echo "inactivo";
-        }
-    
-    @endphp</p>
-    <p><strong>carrera: </strong>{{$encuesta->carrera}}</p>
-    <br>
-    <a href="{{route('encuestas.edit',$encuesta)}}">Editar encuesta</a>
 
+<div class="container">
+    <div class="grid grid-cols-12 ">
+            <div class="col-span-8 col-start-3">
+            <div class="container">
+                <div class="grid grid-cols-12 border-2 border-solid">
+                    <div class="col-span-10">
+                        <h1>Encuesta: {{$encuesta->name}}</h1>
+                        <p><strong>periodo: </strong>{{$encuesta->periodo}}</p>
+                        <p><strong>Area: </strong>{{$encuesta->carrera}}</p>
+                        <p><strong>estado: </strong>@php
+                            if ($encuesta->estado==1){
+                                echo "activo";
+                            }
+                            else {
+                                echo "inactivo";
+                            }
+                        
+                        @endphp</p>
+                    </div>
+                    
+                    <div class="text-end col-span-2">
+                        <a href="{{route('encuestas.edit',$encuesta)}}" class="border-solid border-2 border-yellow-400 bg-yellow-400">Editar encuesta</a>
+                        <br><br><br>
+                        <a href="{{ route('preguntas.create', $encuesta)}}" class="border-solid border-2 border-blue-400 bg-blue-400">agregar pregunta</a>
+                    </div>
+                </div>
+            </div>                
 
-        @foreach ($preguntas as $pregunta)
-        <h4>{{ $pregunta->texto }}</h4>        
+            @foreach ($preguntas as $pregunta)
+            <div class="container">
+                <div class="grid grid-cols-12 border-2 border-solid ">
+                    <div class="col-span-8">
+                        <h4>{{ $pregunta->texto }}</h4> 
+
+                        @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
+                        <div class="container">
+                            <div class="grid grid-cols-12 ">
+
+                                <div class="col-span-10">
+                                    <li>{{ $respuesta->texto }}</li>
+                                </div>
+                                <div class="container text-center">
+                                    <div class="grid grid-flow-col gap-3 ">
+                                        <div>
+                                            <a href="{{route('respuestas.edit',$respuesta->id)}}" class="border-solid border-2 border-yellow-400 bg-yellow-400">Editar</a>
+                                        </div>
+                                        <div>
+                                            <form action="{{ route('respuestas.cambiarEstado', $respuesta->id) }}" method="POST">
+                                                @csrf
+                                                @method('put')
+                                                    <input type="hidden" name="estado" value="0">
+                                                <button type="submit" class="border-solid border-2 border-red-400 bg-red-400">Desactivar</button>
+                                            </form>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+                    </div>
+                    <div class="col-span-3 col-start-10">
+                        <div class="container ">
+                            <div class="grid grid-cols-5 gap-y-2 gap-x-1 border-2">
+                                
+                                <div class="col-span-3">
+                                    <a href="{{route('preguntas.edit',$pregunta->id)}}" class=" border-solid border-2 border-yellow-400 bg-yellow-400">editar pregunta</a>
+                                </div>
+                                
+                                <div class="col-span-2">
+                                    <form action="{{ route('preguntas.cambiarEstado', $pregunta->id) }}" method="POST">
+                                        @csrf
+                                            <input type="hidden" name="estado" value="0">        
+                                        <button type="submit" class="border-solid border-2 border-red-400 bg-red-400">Desactivar</button>
+                                    </form>
+                                </div>
+                                <div class="col-span-4">
+                                    @for ($i = 0; $i < count($pregunta->respuestas->where('estado', 1)) - 1; $i++)
+                                    <br>
+                                    @endfor
+
+                                    <a href="{{route('respuestas.createe',$pregunta->id)}}" class="border-solid border-2 border-blue-400 bg-blue-400">crear respuesta</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>                                        
+            </div>
+            @endforeach
+        </div>
+        
+    
        
-        <a href="{{route('preguntas.edit',$pregunta->id)}}">editar pregunta</a>
-        <form action="{{ route('preguntas.cambiarEstado', $pregunta->id) }}" method="POST">
-            @csrf
-                <input type="hidden" name="estado" value="0">        
-            <button type="submit">Desactivar</button>
-        </form>
-        
-        <ul>
-        <ol type="a">
-        @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
-        
-            <li>{{ $respuesta->texto }}</li>
-            <a href="{{route('respuestas.edit',$respuesta->id)}}">editar respuesta</a>
-            <form action="{{ route('respuestas.cambiarEstado', $respuesta->id) }}" method="POST">
-                @csrf
-                @method('put')
-                    <input type="hidden" name="estado" value="0">        
-                <button type="submit">Desactivar</button>
-            </form>
-        @endforeach 
-        </ol>
-        </ul>
-        <h4>{{$pregunta->id}}</h4>
+    </div>
+</div>
 
 
-        <a href="{{route('respuestas.createe',$pregunta->id)}}">crear respuesta</a>
-
-
-@endforeach
 <br><br>
-    <a href="{{ route('preguntas.create', $encuesta)}}">agregar pregunta</a>
+  
 
         
     

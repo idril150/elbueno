@@ -14,9 +14,9 @@
         }
     </style>
 
-
+@vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg">
     @include('layouts.partials.header')
 
     @yield('content')
