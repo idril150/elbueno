@@ -56,8 +56,9 @@
                                     <input type="hidden" name="estado" value="1">
                                 </label>     
                             
-                            <button type="submit" class="bg-blue-400 w-[206px] h-10 rounded-lg text-center">Publicar Encuestas</button>
-                            <br><br>
+                                <button type="submit" class="bg-blue-400 w-[206px] h-10 rounded-lg text-center">Publicar Encuestas</button>
+                                <br><br>
+                            </form>
                     </div>
                 </div>                
             </div>                   
