@@ -14,7 +14,7 @@
                     <div class="grid grid-cols-1 border-2 border-dashed">
                         <div>
                             <h1>Encuestas para el seguimiento de egresados</h1><br>
-                            <a href="{{route('encuestas.create')}}" class="bg-blue-400">crear encuesta</a>                            
+                            <a href="{{route('encuestas.create')}}" class="bg-blue-400 px-4 py-2 text-sm uppercase font-bold text-cyan-50 rounded-lg text-center">crear encuesta</a>                            
                             <br><br>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                     <div class="grid grid-cols-12 border-2 border-dashed ">
                         <div class="col-span-8 col-start-2">
                             <div class=" ">
-                                <li><a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a></li>
+                                <li><a href="{{route('encuestas.show',$encuesta->id)}} ">{{$encuesta->name}} </a></li>
                             </div>
                         </div>
                         <div class="col-span-2 col-start-12">
@@ -33,7 +33,7 @@
                                 <form action="{{ route('encuestas.cambiarEstado', $encuesta->id) }}" method="POST">
                                 @csrf
                                     <input type="hidden" name="estado" value="0">        
-                                <button type="submit" class="bg-red-400">Desactivar</button>
+                                <button type="submit" class="bg-red-400 rounded-lg text-center">Desactivar</button>
                             </form>
                         </div>
 

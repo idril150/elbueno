@@ -20,7 +20,7 @@
 
 @vite('resources/css/app.css')
 </head>
-<body class="bg">
+<body >
     @include('layouts.partials.header')
 
     @yield('content')
