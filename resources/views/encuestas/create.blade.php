@@ -7,9 +7,18 @@
     <div class="col-span-2 col-start-2">
         <div class="container">
             <div class="grid grid-cols-12 border-2 border-dashed">
-                <div></div>
-                <h1>En esta pagina se puede crear un formulario</h1>
-                <a href="{{route('encuestas.index')}}"class="bg-blue-400 px-4 py-2 text-sm uppercase font-bold text-cyan-50 rounded-lg text-center"><-- volver</a>
+                <div class="col-span-7">
+                    En esta pagina se puede crear un formulario
+                </div>
+                <div class="col-span-5"><br></div>
+
+                <div class="col-span-3 col-start-12">
+                    <br>
+                    <a href="{{route('encuestas.index')}}"class="bg-blue-400 px-1 py-1 text-sm uppercase font-bold text-cyan-50 rounded-lg text-center"><-- volver</a>
+                    <br>
+                </div>
+
+                
                 <br>
                 <form action="{{route('encuestas.store')}}" method="POST">
     </div>
