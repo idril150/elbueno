@@ -13,29 +13,18 @@
     <div class="container">
         <div class="grid grid-cols-12">            
             
-            <div class="col-span-8  col-start-3">
+            <div class="col-span-6  col-start-4">
                 <div class="container">
-                    <div class="grid grid-cols-1 border-2 border-solid">
+                    <div class="grid grid-cols-1 border-2 border-solid ">
+                        <div>editar informacion de la encuesta</div>
                         <div>
-                            Encuesta: seguimiento de egresados <br>
-                            periodo:2019-2022 <br>
-                            carrera: Sistemas <br>
-                            estado: activo <br>
+                            nombre
                         </div>
+                        <div>periodo</div>
+                        <div>carrera</div>
+                        <div></div>
                     </div>
                 </div>                
-
-                <div class="container">
-                    <div class="grid grid-cols-12 border-2 border-solid ">
-                        <div class="col-span-8">
-                            encuestaasdfdsfdsfds
-                        </div>
-                        <div class="col-span-2 col-start-9">
-                            desactivarfgdsfsd f
-                        </div>
-
-                    </div>                                        
-                </div>
             </div>                   
         </div>
     </div>

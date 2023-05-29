@@ -3,6 +3,7 @@
 @section('title', 'Encuestas')
 
 @section('content')
+
     <br><br>
     <div class="container">
         <div class="grid grid-cols-12">            
@@ -12,7 +13,7 @@
                     <div class="grid grid-cols-1 border-2 border-solid">
                         <div>
                             <h1>Encuestas para el seguimiento de egresados</h1><br>
-                            <a href="{{route('encuestas.create')}}">crear encuesta</a>                            
+                            <a href="{{route('encuestas.create')}}" class="bg-blue-400">crear encuesta</a>                            
                             <br><br>
                         </div>
                     </div>

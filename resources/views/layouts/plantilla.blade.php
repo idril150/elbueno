@@ -12,6 +12,10 @@
             color: red;
             font-weight: bold;
         }
+        .fondo {
+        background-image: url('img/fondo.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;}
     </style>
 
 @vite('resources/css/app.css')
