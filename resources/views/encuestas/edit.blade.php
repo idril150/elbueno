@@ -25,7 +25,6 @@
                     
                             <form action="{{route('encuestas.update', $encuesta)}}" method="post">
                                 @csrf
-                                @method('put')
                                 <div class="grid grid-cols-12 border-2 border-dashed items-center justify-center">
                                 <div class="col-start-5 col-span-3">
                                     <br>

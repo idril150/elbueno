@@ -25,12 +25,11 @@
                     
                             <form action="{{route('encuestas.store')}}" method="post">
                                 @csrf
-                                @method('put')
                                 <div class="grid grid-cols-12 border-2 border-dashed items-center justify-center">
                                 <div class="col-start-5 col-span-3">
                                     <br>
                                     <label>
-                                        Nombre:
+                                        pregunta:
                                         <input type="text" name="name" value="{{old('name')}}">
                                     </label>
                                 </div>
@@ -56,7 +55,8 @@
                                     <input type="hidden" name="estado" value="1">
                                 </label>     
                             
-                            <button type="submit" class="bg-blue-400 w-[206px] h-10 rounded-lg text-center">Publicar Encuestas</button>
+                                <button type="submit" class="bg-blue-400 w-[206px] h-10 rounded-lg text-center">agregar pregunta</button>
+                            </form>
                             <br><br>
                     </div>
                 </div>                
