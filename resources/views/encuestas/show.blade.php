@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="bg-gradient-to-br from-purple-300 via-indigo-500 to-teal-300">
+<div class="min-h-screen bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
   
 
 <div class="container">
