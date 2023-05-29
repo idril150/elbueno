@@ -7,7 +7,7 @@
     <div class="container">
         <div class="grid grid-cols-12">
             <div class="col-span-3 col-start-1">
-                {{-- <a href="{{route('encuestas.show',$encuesta_id)}}" class="bg-blue-400 px-4 py-2 text-sm uppercase font-bold text-cyan-50 rounded-lg text-center"><-- volver a la encuesta</a>  --}}
+                <a href="#" onclick="history.back();" class="bg-blue-400 px-4 py-2 text-sm uppercase font-bold text-cyan-50 rounded-lg text-center"><-- volver a la encuesta</a>
             </div>
         </div>
     </div>
