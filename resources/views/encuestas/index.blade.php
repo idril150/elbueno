@@ -3,7 +3,7 @@
 @section('title', 'Encuestas')
 
 @section('content')
-<div class="bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
+<div class="min-h-screen bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
     <br><br>
    
     <div class="container">
