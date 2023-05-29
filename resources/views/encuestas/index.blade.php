@@ -22,7 +22,7 @@
 
                 @foreach($encuestas as $encuesta)
                 <div class="container">
-                    <div class="grid grid-cols-12 border-2 border-dashed ">
+                    <div class="grid grid-cols-12 border-b-2 border-r-2 border-l-2 border-dashed ">
                         <div class="col-span-8 col-start-2">
                             <div class=" ">
                                 <li><a href="{{route('encuestas.show',$encuesta->id)}} ">{{$encuesta->name}} </a></li>
@@ -33,7 +33,7 @@
                                 <form action="{{ route('encuestas.cambiarEstado', $encuesta->id) }}" method="POST">
                                 @csrf
                                     <input type="hidden" name="estado" value="0">        
-                                <button type="submit" class="bg-red-400 rounded-lg text-center">Desactivar</button>
+                                <button type="submit" class="bg-red-400 rounded-lg text-center ">Desactivar</button>
                             </form>
                         </div>
 
