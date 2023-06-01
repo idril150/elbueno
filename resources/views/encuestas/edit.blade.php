@@ -29,6 +29,10 @@
             <br>
         @enderror
         <br>
+        <label >
+            Area
+            <input type="text" name="carrera" value="{{old('carrera')}}">
+        </label>
         <label>
             <input type="hidden" name="estado" value="1">
         </label>

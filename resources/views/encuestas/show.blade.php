@@ -9,6 +9,7 @@
     <a href="{{route('encuestas.index')}}"><-- volver a las encuestas</a>
     
     <p><strong>periodo: </strong>{{$encuesta->periodo}}</p>
+    <p><strong>Area</strong>{{$encuesta->carrera}}</p>
     <p><strong>estado: </strong>@php
         if ($encuesta->estado==1){
             echo "activo";
@@ -43,7 +44,6 @@
             <form action="{{ route('respuestas.cambiarEstado', $respuesta->id) }}" method="POST">
                 @csrf
                 @method('put')
-
                     <input type="hidden" name="estado" value="0">        
                     
                 <button  type="submit">Desactivar</button>
@@ -52,8 +52,10 @@
         @endforeach 
         </ol>
         </ul>
-        <a href="{{route('respuestas.createe',$pregunta->id)}}" >crear respuesta</a>
-        <br><br><br>
+        <h4>{{$pregunta->id}}</h4>
+
+
+        <a href="{{route('respuestas.createe',$pregunta->id)}}">crear respuesta</a>
 
 
 @endforeach
