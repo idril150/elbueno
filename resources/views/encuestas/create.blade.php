@@ -29,7 +29,7 @@
                                 <div class="col-start-5 col-span-3">
                                     <br>
                                     <label>
-                                        pregunta:
+                                        Nombre:
                                         <input type="text" name="name" value="{{old('name')}}">
                                     </label>
                                 </div>
