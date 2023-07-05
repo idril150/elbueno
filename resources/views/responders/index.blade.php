@@ -4,22 +4,37 @@
 
 @section('content')
 
-    <h1>listado de formularios</h1>
-    <a href="{{route('encuestas.create')}}">crear encuesta</a>
-    <ul>
-        @foreach($encuestas as $encuesta)
-        <a href="{{route('encuestas.show',$encuesta->id)}}">{{$encuesta->name}}</a>
-    <ul>
-    </ul>
-    {{-- <form action="{{ route('encuestas.update', $encuesta->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-            <input type="hidden" name="estado" value="0">        
-        <button type="submit">Desactivar</button>
-    </form> --}}
-@endforeach
-    </ul>
-    {{$encuestas->links()}}
+<div class="min-h-screen bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
+    <br><br>
+   
+    <div class="container">
+        <div class="grid grid-cols-12">            
+            
+            <div class="col-span-8  col-start-3">
+                <div class="container">
+                    <div class="grid grid-cols-1 border-2 border-dashed">
+                        <div>
+                            <h1>Encuestas para el seguimiento de egresados</h1><br>                           
+                            <br><br>
+                        </div>
+                    </div>
+                </div>                
+  
+                @foreach($encuestas as $encuesta)
+                <div class="container ">
+                    <div class="grid  py-3 border-b-2 border-r-2 border-l-2   border-dashed">
+                        <li><a href="{{route('responders.show',$encuesta->id)}} "class="bg-blue-400 px-4 py-2 text-sm uppercase font-bold text-cyan-50 rounded-lg text-center">{{$encuesta->name}} </a></li>
+                    </div>                                        
+                </div>
+                @endforeach
+            </div>                   
+        </div>
+    </div>
+</div>
+
+
+    
+            
 @endsection
 
 

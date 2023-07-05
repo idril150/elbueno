@@ -11,7 +11,8 @@ use App\Http\Requests\StoreEncuesta;
 class EncuestaController extends Controller
 {
     public function index(){
-        $encuestas = Encuesta::where('estado', 1)->orderBy('id', 'desc')->paginate();
+        // $user = auth()->user();
+        $encuestas = Encuesta::where('estado', 1)/*->where('carrera', $user->carrera)*/->orderBy('id', 'desc')->paginate();
         return view('encuestas.index', compact('encuestas'));
     }
 
@@ -52,10 +53,4 @@ class EncuestaController extends Controller
         $encuesta->save();
         return redirect()->route('encuestas.index', $encuesta);
     }
-    
-
-    // public function destroy(Encuesta $encuesta){
-    //     $encuesta->delete();
-    //     return redirect()->route('encuestas.index');
-    // }
 }
