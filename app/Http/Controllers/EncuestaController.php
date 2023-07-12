@@ -6,7 +6,9 @@ use App\Models\Encuesta;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\StoreEncuesta;
-
+use App\Models\Pregunta;
+use App\Models\Responde;
+use App\Models\Respuesta;
 
 class EncuestaController extends Controller
 {
@@ -52,5 +54,45 @@ class EncuestaController extends Controller
         $encuesta->estado = $request->estado;
         $encuesta->save();
         return redirect()->route('encuestas.index', $encuesta);
+    }
+
+    public function responder(){
+       $encuestas = Encuesta::where('estado', 1)/*->where('carrera', $user->carrera)*/->orderBy('id', 'desc')->paginate();
+        return view('responders.index', compact('encuestas'));
+        
+     }
+
+    public function guardarRespuestas(Responde $responde, Request $request){
+        $user_id = 2; // Obtener el ID del usuario autenticado
+        $respuestas = $request->input('respuestas', []);
+    
+        foreach ($respuestas as $preguntaId => $respuestaValues) {
+            $pregunta = Pregunta::findOrFail($preguntaId);
+    
+            if ($pregunta->tipo == 1) {
+                // Pregunta cerrada
+                foreach ($respuestaValues as $respuestaId) {
+                    $responde = new Responde();
+                    $responde->user_id = $user_id;
+                    $responde->respuesta_id = $respuestaId;
+                    $responde->save();
+                }
+            } else {
+                // dd($respuestaValues);                   
+                    $respuesta = new Respuesta();
+                    $respuesta->texto = $respuestaValues;
+                    $respuesta->pregunta_id = $preguntaId;
+                    $respuesta->estado = 1;
+                    $respuesta->save();
+    
+                    $responde = new Responde();
+                    $responde->user_id = $user_id;
+                    $responde->respuesta_id = $respuesta->id;
+                    $responde->save();
+            }
+        }
+    
+        return "Respuestas guardadas exitosamente.";
+    
     }
 }

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="min-h-screen bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
+{{-- <div class="min-h-screen bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
   
 
     <div class="container">
@@ -46,6 +46,7 @@
                                         <div class="grid grid-flow-col gap-3 ">
                                             <div>
                                                 <a href="{{route('respuestas.edit',$respuesta->id)}}" class="bg-yellow-400 px-2 py-0.25 rounded-lg text-center">Editar</a>
+                                                
                                             </div>
                                             
                                         </div>                                    
@@ -65,7 +66,63 @@
     <br><br>
       
     
-            
+             --}}
 
+             {{-- <form action="{{ route('encuestas.guardarRespuestas', $encuesta) }}" method="POST">
+                @csrf
+                
+                @foreach($preguntas as $pregunta)
+                    <p>{{ $pregunta->texto }}</p>
+                    
+                    @if($pregunta->tipo)
+                        <!-- Campo de respuesta para preguntas de opción múltiple -->
+                        <div>
+                            @foreach($pregunta->respuestas as $respuesta)
+                                <label>
+                                    <input type="checkbox" name="respuestas[{{ $pregunta->id }}][]" value="{{ $respuesta->id }}">
+                                    {{ $respuesta->texto }}
+                                </label>
+                                <br>
+                            @endforeach
+                        </div>
+                    @else
+                        <!-- Campo de respuesta para preguntas de texto abierto -->
+                        <div>
+                            <input type="text" name="respuestas[{{ $pregunta->id }}]">
+                        </div>
+                    @endif
+                @endforeach
+                
+                <button type="submit">Enviar respuestas</button>
+            </form> --}}
+
+            <form action="{{ route('encuestas.guardarRespuestas', $encuesta) }}" method="POST">
+                @csrf
+    
+                @foreach($preguntas as $pregunta)
+                    <p>{{ $pregunta['texto'] }}</p>
+    
+                    @if($pregunta['tipo'])
+                        <!-- Campo de respuesta para preguntas de opción múltiple -->
+                        <div>
+                            @foreach($pregunta['respuestas'] as $respuesta)
+                                <label>
+                                    <input type="checkbox" name="respuestas[{{ $pregunta['id'] }}][]" value="{{ $respuesta['id'] }}">
+                                    {{ $respuesta['texto'] }}
+                                </label>
+                                <br>
+                            @endforeach
+                        </div>
+                    @else
+                        <!-- Campo de respuesta para preguntas de texto abierto -->
+                        <div>
+                            <input type="text" name="respuestas[{{ $pregunta->id }}]">
+                        </div>
+                    @endif
+                @endforeach
+    
+                <button type="submit">Enviar respuestas</button>
+            </form>
+    
 @endsection
 

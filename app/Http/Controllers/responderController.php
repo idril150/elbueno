@@ -17,6 +17,10 @@ class responderController extends Controller
     }
 
     public function show($id){
+        // $encuesta = Encuesta::findOrFail($id);
+        // $preguntas = $encuesta->preguntas->where('estado', 1);
+        // return view('responders.show', compact('encuesta', 'preguntas'));
+
         $encuesta = Encuesta::findOrFail($id);
         $preguntas = $encuesta->preguntas->where('estado', 1);
         return view('responders.show', compact('encuesta', 'preguntas'));
