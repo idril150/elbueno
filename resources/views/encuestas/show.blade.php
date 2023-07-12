@@ -36,28 +36,29 @@
             </div>                
 
             @foreach ($preguntas as $pregunta)
-            <div class="container">
-                <div class="grid grid-cols-12 border-b-2 border-r-2 border-l-2 border-dashed ">
-                    <div class="col-span-8">
-                        <h4>{{ $pregunta->texto }}</h4> 
+    <div class="container">
+        <div class="grid grid-cols-12 border-b-2 border-r-2 border-l-2 border-dashed">
+            <div class="col-span-8">
+                <h4>{{ $pregunta->texto }}</h4> 
 
-                        @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
-                        <div class="container ">
-                            <div class="grid grid-cols-12 ">
-
+                @if ($pregunta->tipo)
+                    <!-- Pregunta de opción múltiple -->
+                    @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
+                        <div class="container">
+                            <div class="grid grid-cols-12">
                                 <div class="col-span-10">
                                     <li>{{ $respuesta->texto }}</li>
                                 </div>
                                 <div class="container text-center">
-                                    <div class="grid grid-flow-col gap-3 ">
+                                    <div class="grid grid-flow-col gap-3">
                                         <div>
-                                            <a href="{{route('respuestas.edit',$respuesta->id)}}" class="bg-yellow-400 px-2 py-0.25 rounded-lg text-center">Editar</a>
+                                            <a href="{{ route('respuestas.edit', $respuesta->id) }}" class="bg-yellow-400 px-2 py-0.25 rounded-lg text-center">Editar</a>
                                         </div>
                                         <div class="block">
                                             <form action="{{ route('respuestas.cambiarEstado', $respuesta->id) }}" method="POST">
                                                 @csrf
                                                 @method('put')
-                                                    <input type="hidden" name="estado" value="0">
+                                                <input type="hidden" name="estado" value="0">
                                                 <button type="submit" class="bg-red-400 block rounded-lg text-center">Desactivar</button>
                                                 <br>
                                             </form>
@@ -66,8 +67,9 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
-
+                    @endforeach
+                @endif
+            
                     </div>
                     <div class="col-span-3 col-start-10">
                         <div class="container ">
