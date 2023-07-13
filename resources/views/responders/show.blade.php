@@ -75,38 +75,7 @@
             </div>                       
         </div>        
     </div>
-    
-    
-    <br><br>
-      
-    
-             
-             {{--
-                
-                
-                    
-                    
-                        <!-- Campo de respuesta para preguntas de opción múltiple -->
-                        <div>
-                            @foreach($pregunta->respuestas as $respuesta)
-                                <label>
-                                    <input type="checkbox" name="respuestas[{{ $pregunta->id }}][]" value="{{ $respuesta->id }}">
-                                    {{ $respuesta->texto }}
-                                </label>
-                                <br>
-                            @endforeach
-                        </div>
-                    @else
-                        <!-- Campo de respuesta para preguntas de texto abierto -->
-                        <div>
-                            
-                        </div>
-                    @endif
-                @endforeach
-                
-                <button type="submit">Enviar respuestas</button>
-            </form> 
-
+    <br><br>   
             {{-- <form action="{{ route('encuestas.guardarRespuestas', $encuesta) }}" method="POST">
                 @csrf
     
@@ -134,6 +103,5 @@
     
                 <button type="submit">Enviar respuestas</button>
             </form> --}}
-    
 @endsection
 
