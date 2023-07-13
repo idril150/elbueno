@@ -21,6 +21,7 @@
                 </div>                
 
                 @foreach($encuestas as $encuesta)
+                {{-- enlistado de encuestas --}}
                 <div class="container">
                     <div class="grid grid-cols-12 border-b-2 border-r-2 border-l-2 border-dashed ">
                         <div class="col-span-8 col-start-2">
