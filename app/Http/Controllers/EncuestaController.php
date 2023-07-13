@@ -63,7 +63,7 @@ class EncuestaController extends Controller
      }
 
     public function guardarRespuestas(Responde $responde, Request $request){
-        $user_id = 2; // Obtener el ID del usuario autenticado
+        $user_id = 3; // Obtener el ID del usuario autenticado
         $respuestas = $request->input('respuestas', []);
     
         foreach ($respuestas as $preguntaId => $respuestaValues) {
@@ -71,12 +71,11 @@ class EncuestaController extends Controller
     
             if ($pregunta->tipo == 1) {
                 // Pregunta cerrada
-                foreach ($respuestaValues as $respuestaId) {
                     $responde = new Responde();
                     $responde->user_id = $user_id;
-                    $responde->respuesta_id = $respuestaId;
+                    $responde->respuesta_id = $respuestaValues;
                     $responde->save();
-                }
+                
             } else {
                 // dd($respuestaValues);                   
                     $respuesta = new Respuesta();

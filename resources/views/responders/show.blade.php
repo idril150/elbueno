@@ -107,8 +107,8 @@
                         <div>
                             @foreach($pregunta['respuestas'] as $respuesta)
                                 <label>
-                                    <input type="checkbox" name="respuestas[{{ $pregunta['id'] }}][]" value="{{ $respuesta['id'] }}">
-                                    {{ $respuesta['texto'] }}
+                                    <input type="radio" name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}">
+                                    {{ $respuesta->texto }}
                                 </label>
                                 <br>
                             @endforeach
