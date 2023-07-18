@@ -8,6 +8,7 @@ use App\Http\Controllers\RespuestaController;
 use App\Models\Respuesta;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::get('/',[ExportController::class,'index'])->name('index');
+Route::get('/export',[ExportController::class,'export'])->name('export');
