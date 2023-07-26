@@ -44,5 +44,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+
     ];
+
+    public function actualizar(array $datos)
+    {
+        // Aquí puedes realizar la lógica de actualización de los datos del usuario
+        $this->update($datos);
+    }
 }

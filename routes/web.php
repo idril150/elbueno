@@ -5,6 +5,7 @@ use App\Http\Controllers\EncuestaController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\responderController;
 use App\Http\Controllers\RespuestaController;
+use App\Http\Controllers\UserController;
 use App\Models\Respuesta;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,11 @@ Route::put('respuestas/{pregunta}', [RespuestaController::class, 'cambiarestado'
 
 
 Route::resource('responders', responderController::class);
+
+Route::resource('users', UserController::class);
+Route::put('/users/{user}', [UserController::class, 'actualizar'])->name('users.actualizar');
+Route::get('/users/{user}', 'UserController@show')->name('users.show');
+
 
 
 Route::get('/dashboard', function () {
