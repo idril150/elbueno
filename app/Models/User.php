@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'carrera',
         'Ncontrol',
+        'telefono',
         'password',
     ];
 

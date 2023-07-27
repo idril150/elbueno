@@ -70,7 +70,9 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'carrera' => 'required'
+            'carrera' => 'required',
+            'Ncontrol' => 'required',
+            'telefono' => 'required|string|max:15|numeric',
         ]);
         
         $user->fill($request->post())->save();

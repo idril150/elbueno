@@ -48,6 +48,7 @@ Route::put('respuestas/{pregunta}', [RespuestaController::class, 'cambiarestado'
 
 Route::resource('responders', responderController::class);
 
+
 Route::resource('users', UserController::class);
 Route::put('/users/{user}', [UserController::class, 'actualizar'])->name('users.actualizar');
 Route::get('/users/{user}', 'UserController@show')->name('users.show');

@@ -38,7 +38,16 @@
         </div>
     </div>
         
-
+     <!-- Agregar el campo Teléfono -->
+    <div class="mt-4">
+        <label for="telefono" class="block font-medium text-sm text-gray-700">Teléfono</label>
+        <input type="text" name="telefono" id="telefono" pattern="[0-9]+" class="form-input rounded-md shadow-sm mt-1 block w-full"
+            value="{{ old('telefono') }}" required autofocus>
+        @error('telefono')
+            <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+        @enderror
+    </div>
+    
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
