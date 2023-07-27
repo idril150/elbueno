@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'email' => 'victor@admin.com',
             'email_verified_at' => now(),
             'carrera' => 'sistemas',
+            'Ncontrol' => '1827000',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ])-> assignRole('admin');
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
             'email' => 'Jorge@manager.com',
             'carrera' => 'sistemas',
             'email_verified_at' => now(),
+            'Ncontrol' => '18270000',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ])-> assignRole('manager');
@@ -37,6 +39,7 @@ class UserSeeder extends Seeder
             'email' => 'mairo@manager.com',
             'email_verified_at' => now(),
             'carrera' => 'sistemas',
+            'Ncontrol' => '18270000',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ])-> assignRole('user');

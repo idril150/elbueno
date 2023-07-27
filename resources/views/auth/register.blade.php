@@ -22,6 +22,21 @@
             <x-text-input id="carrera" class="block mt-1 w-full" type="carrera" name="carrera" :value="old('carrera')" required autocomplete="carrera" />
             <x-input-error :messages="$errors->get('carrera')" class="mt-2" />
         </div>
+
+       <!-- Agregar el campo Ncontrol -->
+    <div class="form-group row">
+        <label for="Ncontrol" class="col-md-4 col-form-label text-md-right">Número de control</label>
+
+        <div class="col-md-6">
+            <input id="Ncontrol" type="text" class="form-control @error('Ncontrol') is-invalid @enderror" name="Ncontrol" value="{{ old('Ncontrol') }}" required autocomplete="Ncontrol" autofocus>
+
+            @error('Ncontrol')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
         
 
         <!-- Password -->
