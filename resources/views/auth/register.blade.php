@@ -19,34 +19,25 @@
         <!-- Carrera -->
         <div class="mt-4">
             <x-input-label for="carrera" :value="__('Carrera')" />
-            <x-text-input id="carrera" class="block mt-1 w-full" type="carrera" name="carrera" :value="old('carrera')" required autocomplete="carrera" />
+            <x-text-input id="carrera" class="block mt-1 w-full" type="text" name="carrera" :value="old('carrera')" required autocomplete="carrera" />
             <x-input-error :messages="$errors->get('carrera')" class="mt-2" />
         </div>
 
-       <!-- Agregar el campo Ncontrol -->
-    <div class="form-group row">
-        <label for="Ncontrol" class="col-md-4 col-form-label text-md-right">Número de control</label>
+        <!-- Número de control -->
+        <div class="mt-4">
+            <x-input-label for="Ncontrol" :value="__('Número de control')" />
+            <x-text-input id="Ncontrol" class="block mt-1 w-full" type="text" name="Ncontrol" :value="old('Ncontrol')" required autocomplete="Ncontrol" autofocus />
+            <x-input-error :messages="$errors->get('Ncontrol')" class="mt-2" />
+        </div>
 
-        <div class="col-md-6">
-            <input id="Ncontrol" type="text" class="form-control @error('Ncontrol') is-invalid @enderror" name="Ncontrol" value="{{ old('Ncontrol') }}" required autocomplete="Ncontrol" autofocus>
-
-            @error('Ncontrol')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+        <!-- Agregar el campo Teléfono -->
+        <div class="mt-4">
+            <label for="telefono" class="block font-medium text-sm text-gray-700">Teléfono</label>
+            <input type="text" name="telefono" id="telefono" pattern="[0-9]+" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('telefono') }}" required autofocus>
+            @error('telefono')
+                <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
             @enderror
         </div>
-    </div>
-        
-     <!-- Agregar el campo Teléfono -->
-    <div class="mt-4">
-        <label for="telefono" class="block font-medium text-sm text-gray-700">Teléfono</label>
-        <input type="text" name="telefono" id="telefono" pattern="[0-9]+" class="form-input rounded-md shadow-sm mt-1 block w-full"
-            value="{{ old('telefono') }}" required autofocus>
-        @error('telefono')
-            <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
-        @enderror
-    </div>
     
         <!-- Password -->
         <div class="mt-4">

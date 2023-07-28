@@ -24,6 +24,24 @@
         </div>
 
         <div>
+            <x-input-label for="carrera" :value="__('Carrera')" />
+            <x-text-input id="carrera" name="carrera" type="text" class="mt-1 block w-full" :value="old('carrera', $user->carrera)" required autofocus autocomplete="carrera" />
+            <x-input-error class="mt-2" :messages="$errors->get('carrera')" />
+        </div>
+
+        <div>
+            <x-input-label for="Ncontro" :value="__('Numero de control')" />
+            <x-text-input id="Ncontrol" name="Ncontrol" type="text" class="mt-1 block w-full" :value="old('Ncontrol', $user->Ncontrol)" required autofocus autocomplete="Ncontrol" />
+            <x-input-error class="mt-2" :messages="$errors->get('Ncontrol')" />
+        </div>
+
+        <div>
+            <x-input-label for="telefono" :value="__('Teléfono')" />
+            <x-text-input id="telefono" name="telefono" type="text" class="mt-1 block w-full" :value="old('telefono', $user->telefono)" required autofocus autocomplete="telefono" />
+            <x-input-error class="mt-2" :messages="$errors->get('telefono')" />
+        </div>
+
+        <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />

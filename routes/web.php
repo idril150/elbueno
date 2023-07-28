@@ -37,9 +37,6 @@ Route::resource('preguntas', PreguntaController::class)->except(['Create']);
 Route::get('preguntas/create/{id_encuesta}', [PreguntaController::class, 'create'])->name('preguntas.create');
 
 Route::post('preguntas/{pregunta}', [PreguntaController::class, 'cambiarestado'])->name('preguntas.cambiarEstado');
-
-
-
 Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'create'])->name('respuestas.createe');
 
 Route::resource('respuestas', RespuestaController::class);
