@@ -5,7 +5,10 @@
         <div class="container">
             <div class="grid grid-cols-12 ">
                 <div class="col-start-12">
-                    <a href="{{route('encuestas.index')}}" class="{{request()->routeIs('encuestas.*')? 'active' : ''}} bg-blue-400 p-3 text-sm uppercase font-bold text-cyan-50 rounded-lg block text-center">Encuestas</a>
+                    <a href="{{ route('encuestas.index') }}" class="{{ request()->routeIs('encuestas.*') ? 'active' : '' }} bg-blue-400 p-3 text-sm uppercase font-bold text-cyan-50 rounded-lg block text-center">Encuestas</a>
+                </div>
+                <div class="col-start-1">
+                    <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }} bg-blue-400 p-3 text-sm uppercase font-bold text-cyan-50 rounded-lg block text-center">Dashboard</a>
                 </div>
                 <div class="col-span-full flex justify-end">
                     <form method="POST" action="{{ route('logout') }}">

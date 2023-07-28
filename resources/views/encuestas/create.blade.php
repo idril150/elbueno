@@ -18,7 +18,7 @@
             <div class="col-span-6  col-start-4">
                 <div class="border-t-2 border-r-2 border-l-2 border-dashed">
                     <br>
-                    editar informacion de la encuesta:
+                    <h2 class="text-2xl font-bold">Editar información de la encuesta</h2>
                 </div>
                 <div class="container">
                     

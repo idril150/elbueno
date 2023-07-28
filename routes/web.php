@@ -28,30 +28,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('encuestas', EncuestaController::class); 
+// Rutas para la creacion y edicion de encuestas
+Route::resource('encuestas', EncuestaController::class)->middleware('can:encuestas.index'); 
 Route::post('encuestas/{encuesta}', [EncuestaController::class, 'cambiarEstado'])->name('encuestas.cambiarEstado');
 Route::post('encuestas/{encuesta}/guardarRespuestas', [EncuestaController::class, 'guardarRespuestas'])->name('encuestas.guardarRespuestas');
 
-
-Route::resource('preguntas', PreguntaController::class)->except(['Create']);
+// Rutas para la creacion y edicion de // Rutas para la creacion y edicion de encuestas
+Route::resource('preguntas', PreguntaController::class)->middleware('can:preguntas.index')->except(['Create']);
 Route::get('preguntas/create/{id_encuesta}', [PreguntaController::class, 'create'])->name('preguntas.create');
-
 Route::post('preguntas/{pregunta}', [PreguntaController::class, 'cambiarestado'])->name('preguntas.cambiarEstado');
-Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'create'])->name('respuestas.createe');
 
+// Rutas para la creacion y edicion de respuestas
+Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'create'])->name('respuestas.createe');
 Route::resource('respuestas', RespuestaController::class);
 Route::put('respuestas/{pregunta}', [RespuestaController::class, 'cambiarestado'])->name('respuestas.cambiarEstado');
 
+// Rutas para responder las preguntas
+Route::resource('responders', responderController::class)->middleware('can:responders.index');
 
-Route::resource('responders', responderController::class);
-
-
-Route::resource('users', UserController::class);
+// Rutas para la creacion y edicion de usuarios
+Route::resource('users', UserController::class)->middleware('can:users.index');
 Route::put('/users/{user}', [UserController::class, 'actualizar'])->name('users.actualizar');
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
 
 
-
+// Rutas de breeze para el login y el perfil del usuario
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
