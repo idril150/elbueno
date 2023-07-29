@@ -25,13 +25,13 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'dashboard'])->syncRoles([$admin, $manager, $user]);
 
         // Permisos para la creacion y edicion del curd de usuarios
-        Permission::create(['name' => 'users.index'])->syncRoles([$admin, $manager]);;
+        Permission::create(['name' => 'users.index'])->syncRoles([$admin]);;
         Permission::create(['name' => 'users.show'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'users.actualizar'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'users.store'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'users.update'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'users.destroy'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'users.edit'])->syncRoles([$admin, $manager]);;
+        Permission::create(['name' => 'users.edit'])->syncRoles([$admin]);;
 
         // Permisos para la creacion y edicion del curd de encuestas
         Permission::create(['name' => 'encuestas.show'])->syncRoles([$admin, $manager]);;
