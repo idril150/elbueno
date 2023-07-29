@@ -52,7 +52,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'preguntas.update'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'preguntas.cambiarEstado'])->syncRoles([$admin, $manager]);;
         
-          // Permisos para la creacion y edicion del curd de respuestas
+         // Permisos para la creacion y edicion del curd de respuestas
           Permission::create(['name' => 'respuestas.show'])->syncRoles([$admin, $manager]);;
           Permission::create(['name' => 'respuestas.create'])->syncRoles([$admin, $manager]);;
           Permission::create(['name' => 'respuestas.createe'])->syncRoles([$admin, $manager]);;
