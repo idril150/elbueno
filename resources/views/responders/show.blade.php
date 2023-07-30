@@ -45,7 +45,7 @@
                             {{-- ingresar respuesta de pregunta abierta --}}
                             <div class="col-span-10">
                                 <x-acept-button class="ml-4">
-                                    {{ __('guardar respuestas') }}
+                                    {{ __('guardar') }}
                                 </x-acept-button>
                             </div>
                         </div>
