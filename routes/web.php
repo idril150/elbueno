@@ -59,7 +59,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Rutas para exportar los reportes
-Route::get('/', [ExportController::class, 'index'])->name('index');
+Route::get('/export/index', [ExportController::class, 'index'])->name('index');
 Route::get('/export', [ExportController::class, 'export'])->name('export');
 
 Route::middleware('auth')->group(function () {
