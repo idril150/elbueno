@@ -23,6 +23,7 @@ class RespuestaController extends Controller
     public function store(StoreRespuesta $request){     
         
         
+
         $respuesta = Respuesta::create($request->all());
         $pregunta = $respuesta->pregunta;
         $encuestaId = $pregunta->encuesta_id;
@@ -55,8 +56,4 @@ class RespuestaController extends Controller
         return redirect()->back();  
     }
 
-   
-
-
-    
 }
