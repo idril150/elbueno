@@ -6,6 +6,7 @@ use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\responderController;
 use App\Http\Controllers\RespuestaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExportController;
 use App\Models\Respuesta;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,10 @@ Route::get('/users/{user}', 'UserController@show')->name('users.show');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Rutas para exportar los reportes
+Route::get('/', [ExportController::class, 'index'])->name('index');
+Route::get('/export', [ExportController::class, 'export'])->name('export');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
