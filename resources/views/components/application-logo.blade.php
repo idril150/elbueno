@@ -3,7 +3,7 @@
 </svg> --}}
 
 <div style="display: flex; justify-content: space-between;">
-    @unless(request()->routeIs('dashboard', 'profile.edit'))
+    @unless(request()->routeIs('dashboard', 'profile.edit', 'responders.index', 'responders.show'))
     <a href="/">
         <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 150px;">
     </a>
