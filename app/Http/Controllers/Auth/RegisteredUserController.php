@@ -20,8 +20,11 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+    $carreras = ['Carrera 1', 'Carrera 2', 'Carrera 3', /* ... */]; // Aquí debes obtener la lista de carreras desde tu base de datos o de otra fuente
+
+    return view('auth.register', compact('carreras'));
     }
+    
 
     /**
      * Handle an incoming registration request.

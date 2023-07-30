@@ -19,7 +19,12 @@
         <!-- Carrera -->
         <div class="mt-4">
             <x-input-label for="carrera" :value="__('Carrera')" />
-            <x-text-input id="carrera" class="block mt-1 w-full" type="text" name="carrera" :value="old('carrera')" required autocomplete="carrera" />
+            <select id="carrera" name="carrera" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                <option value="" disabled selected>Select Carrera</option>
+                @foreach($carreras as $carrera)
+                    <option value="{{ $carrera }}">{{ $carrera }}</option>
+                @endforeach
+            </select>
             <x-input-error :messages="$errors->get('carrera')" class="mt-2" />
         </div>
 
@@ -42,23 +47,14 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
+            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
