@@ -55,7 +55,7 @@
                                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">Eliminar</button>
+                                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">Eliminar</button>
                                             </form>
                                         @endcan
                                     </td>
