@@ -1,107 +1,60 @@
-@extends('layouts.plantilla')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Listado de encuestas') }}
+        </h2>
+    </x-slot>
 
-@section('title', 'Encuesta ' . $encuesta->name)
-
-@section('content')
-
- <div class="min-h-screen bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
-  
-
-    <div class="container">
-        <div class="grid grid-cols-12 ">
-                <div class="col-span-7 col-start-4">
-                <div class="container">
-                    <div class="grid grid-cols-11 border-2 border-dashed">
-                        <div class="col-span-10">
-                            <h1>Encuesta: {{$encuesta->name}}</h1>
-                            <p><strong>periodo: </strong>{{$encuesta->periodo}}</p>
-                            <p><strong>Area: </strong>{{$encuesta->carrera}}</p>
-                            <p><strong>estado: </strong>@php
-                                if ($encuesta->estado==1){
-                                    echo "activo";
-                                }
-                                else {
-                                    echo "inactivo";
-                                }
-                            
-                            @endphp</p>
-                        </div>
-                    </div>
-                </div>                
-                <form action="{{ route('encuestas.guardarRespuestas', $encuesta) }}" method="POST">
+    <div class="py-12">
+        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                
+                <form method="POST" action="{{ route('encuestas.guardarRespuestas', $encuesta) }}">
                     @csrf
-                    @foreach($preguntas as $pregunta)                    
-                <div class="container">
-                    <div class="grid grid-cols-11 border-b-2 border-r-2 border-l-2 border-dashed ">
-                        <div class="col-span-8">
-                            
-                            <p>{{ $pregunta->texto }}</p> 
-    
-                            
+                    @foreach($preguntas as $pregunta)  
+                    <br>
+                    <div class="ml-4">
+                        <x-input-label for=$pregunta :value="__($pregunta->texto)" />
                             @if($pregunta->tipo)
-                            <div class="container ">
-                                <div class="grid grid-cols-12 ">
+                            <div >
                                     {{-- respuestas de pregunta abierta --}}
-                                    <div class="col-span-10">
                                         @foreach($pregunta->respuestas as $respuesta)
                                         <label>
-                                            <input type="radio" name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}">
-                                            {{ $respuesta->texto }}                                            
+                                            <x-radio-input name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}" label="{{ $respuesta->texto }}" required />                    
                                         </label>
                                         <br>
-                                        @endforeach
-                                        
-                                    </div>
-                                </div>
+                                        @endforeach                                        
                             </div>   
                             @else
-                            <div class="container ">
+                            <div>
                                 <div class="grid grid-cols-12 ">
                                     {{-- ingresar respuesta de pregunta abierta --}}
                                     <div class="col-span-10">
-                                        <input type="text" name="respuestas[{{ $pregunta->id }}]">
-                                        <br>
+                                        <x-text-input class="block mt-1 w-full" type="text" name="respuestas[{{ $pregunta->id }}]" required />
+                                        
                                     </div>
                                 </div>
                             </div>          
-                            @endif        
-                        </div>
+                            @endif                                   
                     </div>
                     @endforeach
-                    <br>
-                    <button type="submit" class="bg-blue-400 px-4 py-1 rounded-lg text-center ">Enviar respuestas</button>                                        
-                </div>
-                
-            </div>                       
-        </div>        
-    </div>
-    <br><br>   
-            {{-- <form action="{{ route('encuestas.guardarRespuestas', $encuesta) }}" method="POST">
-                @csrf
-    
-                @foreach($preguntas as $pregunta)
-                    <p>{{ $pregunta['texto'] }}</p>
-    
-                    @if($pregunta['tipo'])
-                        <!-- Campo de respuesta para preguntas de opción múltiple -->
-                        <div>
-                            @foreach($pregunta['respuestas'] as $respuesta)
-                                <label>
-                                    <input type="radio" name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}">
-                                    {{ $respuesta->texto }}
-                                </label>
-                                <br>
-                            @endforeach
-                        </div>
-                    @else
-                        <!-- Campo de respuesta para preguntas de texto abierto -->
-                        <div>
-                            <input type="text" name="respuestas[{{ $pregunta->id }}]">
-                        </div>
-                    @endif
-                @endforeach
-    
-                <button type="submit">Enviar respuestas</button>
-            </form> --}}
-@endsection
 
+                  
+                    <div class="flex items-center justify-end mt-4">
+                        <div class="grid grid-cols-12 ">
+                            {{-- ingresar respuesta de pregunta abierta --}}
+                            <div class="col-span-10">
+                                <x-acept-button class="ml-4">
+                                    {{ __('guardar') }}
+                                </x-acept-button>
+                            </div>
+                        </div>
+                           
+                    </div>
+                </form>
+                <br>
+
+            </div>
+        </div>
+    </div>
+</x-app-layout>
