@@ -45,7 +45,7 @@
                                     <div class="col-span-10">
                                         @foreach($pregunta->respuestas as $respuesta)
                                         <label>
-                                            <input type="radio" name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}">
+                                            <input type="radio" name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}" required>
                                             {{ $respuesta->texto }}                                            
                                         </label>
                                         <br>
@@ -59,7 +59,7 @@
                                 <div class="grid grid-cols-12 ">
                                     {{-- ingresar respuesta de pregunta abierta --}}
                                     <div class="col-span-10">
-                                        <input type="text" name="respuestas[{{ $pregunta->id }}]">
+                                        <input type="text" name="respuestas[{{ $pregunta->id }}]" required>
                                         <br>
                                     </div>
                                 </div>
@@ -76,32 +76,5 @@
         </div>        
     </div>
     <br><br>   
-            {{-- <form action="{{ route('encuestas.guardarRespuestas', $encuesta) }}" method="POST">
-                @csrf
-    
-                @foreach($preguntas as $pregunta)
-                    <p>{{ $pregunta['texto'] }}</p>
-    
-                    @if($pregunta['tipo'])
-                        <!-- Campo de respuesta para preguntas de opción múltiple -->
-                        <div>
-                            @foreach($pregunta['respuestas'] as $respuesta)
-                                <label>
-                                    <input type="radio" name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}">
-                                    {{ $respuesta->texto }}
-                                </label>
-                                <br>
-                            @endforeach
-                        </div>
-                    @else
-                        <!-- Campo de respuesta para preguntas de texto abierto -->
-                        <div>
-                            <input type="text" name="respuestas[{{ $pregunta->id }}]">
-                        </div>
-                    @endif
-                @endforeach
-    
-                <button type="submit">Enviar respuestas</button>
-            </form> --}}
 @endsection
 

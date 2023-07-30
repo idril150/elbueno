@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Encuesta;
 use Illuminate\Http\Request;
-
+use App\Rules\AllQuestionsAnsweredRule;
 use App\Http\Requests\StoreEncuesta;
 use App\Models\Pregunta;
 use App\Models\Responde;
@@ -63,9 +63,8 @@ class EncuestaController extends Controller
      }
 
     public function guardarRespuestas(Responde $responde, Request $request){
-        $user_id = 3; // Obtener el ID del usuario autenticado
+        $user_id = auth()->id(); // Obtener el ID del usuario autenticado
         $respuestas = $request->input('respuestas', []);
-    
         foreach ($respuestas as $preguntaId => $respuestaValues) {
             $pregunta = Pregunta::findOrFail($preguntaId);
     
