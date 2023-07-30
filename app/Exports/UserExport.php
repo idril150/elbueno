@@ -20,4 +20,4 @@ class UserExport implements FromView
             'users' => User::all()
         ]);
     }
-}
+} 
