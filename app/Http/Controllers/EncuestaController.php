@@ -9,6 +9,7 @@ use App\Http\Requests\StoreEncuesta;
 use App\Models\Pregunta;
 use App\Models\Responde;
 use App\Models\Respuesta;
+use Illuminate\Support\Facades\Session;
 
 class EncuestaController extends Controller
 {
@@ -41,11 +42,11 @@ class EncuestaController extends Controller
     }
 
     public function update(Request $request,Encuesta $encuesta){
-        $request->validate([
-            'name' => 'required',
-            'periodo' => 'required',
-            'estado' => 'required'
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'periodo' => 'required',
+        //     'estado' => 'required'
+        // ]);
         $encuesta->update($request->all());
         return redirect()->route('encuestas.show', $encuesta);
     }
@@ -89,8 +90,9 @@ class EncuestaController extends Controller
                     $responde->save();
             }
         }
-    
-        return "Respuestas guardadas exitosamente.";
+        Session::flash('success', 'Encuesta respondida exitosamente');
+
+        return view('dashboard');
     
     }
 }
