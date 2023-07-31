@@ -32,14 +32,17 @@ Route::get('/', function () {
 // Rutas para la creacion y edicion de encuestas
 Route::resource('encuestas', EncuestaController::class)->middleware('can:encuestas.index'); 
 Route::put('encuestas/{encuesta}', [EncuestaController::class, 'update'])->name('encuestas.update');
-
 Route::post('encuestas/{encuesta}', [EncuestaController::class, 'cambiarEstado'])->name('encuestas.cambiarEstado');
 Route::post('encuestas/{encuesta}/guardarRespuestas', [EncuestaController::class, 'guardarRespuestas'])->name('encuestas.guardarRespuestas');
+Route::get('encuestas/{id}/exportar', [EncuestaController::class, 'exportResults'])->name('encuestas.export');
 
-// Rutas para la creacion y edicion de // Rutas para la creacion y edicion de encuestas
+
+
+// Rutas para la creacion y edicion de preguntas
 Route::resource('preguntas', PreguntaController::class)->middleware('can:preguntas.index')->except(['Create']);
 Route::get('preguntas/create/{id_encuesta}', [PreguntaController::class, 'create'])->name('preguntas.create');
 Route::post('preguntas/{pregunta}', [PreguntaController::class, 'cambiarestado'])->name('preguntas.cambiarEstado');
+
 
 // Rutas para la creacion y edicion de respuestas
 Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'create'])->name('respuestas.createe');

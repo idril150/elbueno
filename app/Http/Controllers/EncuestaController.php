@@ -10,6 +10,8 @@ use App\Models\Pregunta;
 use App\Models\Responde;
 use App\Models\Respuesta;
 use Illuminate\Support\Facades\Session;
+use App\Exports\EncuestaResultsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EncuestaController extends Controller
 {
@@ -94,5 +96,13 @@ class EncuestaController extends Controller
 
         return view('dashboard');
     
+    }
+
+    public function exportResults($id)
+    {
+        $encuesta = Encuesta::findOrFail($id);
+        $preguntas = $encuesta->preguntas;
+
+        return Excel::download(new EncuestaResultsExport($encuesta, $preguntas), 'encuesta_results.xlsx');
     }
 }
