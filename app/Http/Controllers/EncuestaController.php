@@ -11,23 +11,25 @@ use App\Models\Responde;
 use App\Models\Respuesta;
 use Illuminate\Support\Facades\Session;
 use App\Exports\EncuestaResultsExport;
+use App\Models\Carrera;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EncuestaController extends Controller
 {
     public function index(){
-        // $user = auth()->user();
+        $user = auth()->user();
         $encuestas = Encuesta::where('estado', 1)/*->where('carrera', $user->carrera)*/->orderBy('id', 'desc')->paginate();
         return view('encuestas.index', compact('encuestas'));
     }
 
     public function create(){
-        return view('encuestas.create');
+        $carreras = Carrera::pluck('nombre')->toArray();
+        return view('encuestas.create', compact('carreras'));
     }
 
     public function store(StoreEncuesta $request){     
         
-        $encuesta = Encuesta::create($request->all());
+        $encuesta = Encuesta::create($request->nombre);
 
         return redirect()->route('encuestas.show', $encuesta);
     }
@@ -39,8 +41,8 @@ class EncuestaController extends Controller
     }
 
     public function edit(Encuesta $encuesta){
-        
-        return view('encuestas.edit', compact('encuesta'));
+        $carreras = Carrera::pluck('nombre')->toArray();
+        return view('encuestas.edit', compact('encuesta', 'carreras'));
     }
 
     public function update(Request $request,Encuesta $encuesta){

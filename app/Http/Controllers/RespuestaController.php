@@ -42,12 +42,10 @@ class RespuestaController extends Controller
     }
 
     public function update(Request $request, Respuesta $respuesta){
-    $respuesta->update($request->all());
+        $respuesta->texto = $request->input('respuesta_texto');
+        $respuesta->save();
     
-    $pregunta = $respuesta->pregunta;
-    $encuestaId = $pregunta->encuesta_id;
-    
-    return redirect()->route('encuestas.show', $encuestaId);
+        return redirect()->back()->with('success', 'La respuesta ha sido actualizada correctamente.');
     }
 
     public function cambiarEstado(Respuesta $respuesta, Request $request){

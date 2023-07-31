@@ -30,8 +30,9 @@ class DatabaseSeeder extends Seeder
          Encuesta::factory(5)->create();
          Pregunta::factory(50)->create();
          Respuesta::factory(300)->create();
-       
 
+       
+        $this->call(CarrerasSeeder::class);
         $this->call(RoleSeeder::class);
 
         $this->call(UserSeeder::class);

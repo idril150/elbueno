@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Crear pregunta') }}
+            {{ __('Modificar informacion de la encuesta') }}
         </h2>
     </x-slot>
 
@@ -24,8 +24,8 @@
                                     <x-input-label for="Periodo" :value="__('Periodo')" />
                                     <x-text-input class="block mt-1 w-full" type="text" name="periodo" :value="old('periodo', $encuesta->periodo)" required />      
                                     <br>                                  
-                                    <x-input-label for="Area" :value="__('Area')" />
-                                    <x-text-input class="block mt-1 w-full" type="text" name="carrera" :value="old('carrera', $encuesta->carrera)" required />      
+                                    <x-select-field name="carrera" :label="__('Carrera')" :options="$carreras" :value="old('carrera', $encuesta->carrera)" required />
+
                                 </div>
                             </div>
                         </div>                                                           

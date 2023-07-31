@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Carrera;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -22,7 +23,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-    $carreras = ['Carrera 1', 'Carrera 2', 'Carrera 3', /* ... */]; // Aquí debes obtener la lista de carreras desde tu base de datos o de otra fuente
+        $carreras = Carrera::pluck('nombre')->toArray(); // Aquí debes obtener la lista de carreras desde tu base de datos o de otra fuente
 
     return view('auth.register', compact('carreras'));
     }
