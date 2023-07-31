@@ -17,7 +17,7 @@ class EncuestaResultsExport implements FromView
 
     protected $encuesta;
     protected $preguntas;
-
+    
     public function __construct(Encuesta $encuesta, $preguntas)
     {
         $this->encuesta = $encuesta;

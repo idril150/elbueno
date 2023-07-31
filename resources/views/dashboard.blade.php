@@ -34,7 +34,7 @@
                 @endcan
                 <div class="p-6">
                     <a href="{{ route('profile.edit') }}" class="text-white bg-yellow-500 hover:bg-yellow-700 font-bold py-2 px-4 rounded">
-                        {{ __('mi información') }}
+                        {{ __('MI Informacion') }}
                     </a>
                 </div>
             </div>
