@@ -16,6 +16,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                @can('users.index')
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('index de usuarios') }}
+                    </x-nav-link>
+                </div>    
+                @endcan
+                
             </div>
 
              {{-- <!-- Navigation Links -->

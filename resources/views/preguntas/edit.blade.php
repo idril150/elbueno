@@ -19,7 +19,7 @@
                                     {{-- ingresar respuesta de pregunta abierta --}}
                                     <div class="col-span-10">
                                         <x-input-label for="pregunta" :value="__('pregunta')" />
-                                        <x-text-input class="block mt-1 w-full" type="text" name="texto" :value="old('texto', $pregunta->texto)" required />      
+                                        <x-text-input class="block mt-1 w-full" type="text" name="texto" :value="old('texto',$pregunta->texto)" required />      
                                         <br>                                  
                                     </div>
                                 </div>
