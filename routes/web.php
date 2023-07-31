@@ -56,6 +56,9 @@ Route::resource('responders', responderController::class)->middleware('can:respo
 Route::resource('users', UserController::class)->middleware('can:users.index');
 Route::put('/users/{user}', [UserController::class, 'actualizar'])->name('users.actualizar');
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
+Route::get('/users/exportar', [UserController::class, 'exportUsers'])->name('users.export');
+
+
 
 
 // Rutas de breeze para el login y el perfil del usuario

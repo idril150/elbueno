@@ -3,10 +3,17 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Listado de usuarios') }}
         </h2>
+        <div class="col-span-12 mt-4"> 
+            <a href="{{ route('export') }}" class="text-white bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded">
+                {{ __('Exportar Usuarios') }}
+            </a>
+        </div>
+        
+        
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <x-table :data="$users">
                 <x-slot name="header">
                     <th scope="col" class="w-1/6 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

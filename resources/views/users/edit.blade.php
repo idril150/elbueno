@@ -38,15 +38,7 @@
                                 <x-input-label for="telefono" :value="__('Teléfono')" />
                                 <x-text-input type="text" name="telefono" :value="$user->telefono" class="form-input rounded-md shadow-sm w-full" pattern="[0-9]+" />
                             </div>
-                        </div> 
-
-                        <div class="grid grid-cols-12 p-6">                           
-                            <div class="col-span-10">
-                                <x-input-label for="carrera" :value="__('Carrera')" />
-                                <x-text-input type="text" name="carrera" :value="$user->carrera" class="form-input rounded-md shadow-sm w-full" />
-                            </div>
-                        </div> 
-                        
+                        </div>                         
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
