@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
+use Illuminate\Database\Seeder;
 
 class RegisteredUserController extends Controller
 {
@@ -49,7 +51,9 @@ class RegisteredUserController extends Controller
             'carrera' => $request->carrera,
             'Ncontrol' => $request->Ncontrol,
             'telefono' => $request->telefono,
-        ]);
+        ])-> assignRole('user');
+
+        
 
         event(new Registered($user));
 
