@@ -7,8 +7,6 @@ use App\Http\Controllers\responderController;
 use App\Http\Controllers\RespuestaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExportController;
-use App\Models\Respuesta;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,9 +52,9 @@ Route::resource('responders', responderController::class)->middleware('can:respo
 
 // Rutas para la creacion y edicion de usuarios
 Route::resource('users', UserController::class)->middleware('can:users.index');
-Route::put('/users/{user}', [UserController::class, 'actualizar'])->name('users.actualizar');
-Route::get('/users/{user}', 'UserController@show')->name('users.show');
-Route::get('/users/exportar', [UserController::class, 'exportUsers'])->name('users.export');
+Route::put('users/{user}', [UserController::class, 'actualizar'])->name('users.actualizar');
+Route::get('users/{user}', 'UserController@show')->name('users.show');
+Route::get('users/exportar', [UserController::class, 'exportUsers'])->name('users.export');
 
 
 

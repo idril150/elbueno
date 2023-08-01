@@ -35,6 +35,7 @@ class RoleSeeder extends Seeder
 
         // Permisos para la creacion y edicion del curd de encuestas
         Permission::create(['name' => 'encuestas.show'])->syncRoles([$admin, $manager]);;
+        Permission::create(['name' => 'encuestas.store'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.create'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.edit'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.index'])->syncRoles([$admin, $manager]);;

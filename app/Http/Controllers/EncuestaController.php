@@ -30,8 +30,8 @@ class EncuestaController extends Controller
     public function store(StoreEncuesta $request)
 {     
     // Crear una nueva instancia de la encuesta
-    $encuesta = new Encuesta();
-    $encuesta->nombre = $request->input('nombre');
+    $encuesta = Encuesta::create($request->all());
+
     // Agrega aquí los campos adicionales de la encuesta
 
     // Guardar la encuesta en la base de datos
