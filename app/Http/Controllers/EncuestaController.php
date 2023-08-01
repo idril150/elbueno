@@ -27,12 +27,13 @@ class EncuestaController extends Controller
         return view('encuestas.create', compact('carreras'));
     }
 
-    public function store(StoreEncuesta $request){     
-        
-        $encuesta = Encuesta::create($request->nombre);
+    public function store(StoreEncuesta $request)
+    {     
+        $encuesta = Encuesta::create($request->all());
 
         return redirect()->route('encuestas.show', $encuesta);
     }
+
 
     public function show($id){
     $encuesta = Encuesta::findOrFail($id);

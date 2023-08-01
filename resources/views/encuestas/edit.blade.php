@@ -23,9 +23,17 @@
                                     <br>                                  
                                     <x-input-label for="Periodo" :value="__('Periodo')" />
                                     <x-text-input class="block mt-1 w-full" type="text" name="periodo" :value="old('periodo', $encuesta->periodo)" required />      
-                                    <br>                                  
-                                    <x-select-field name="carrera" :label="__('Carrera')" :options="$carreras" :value="old('carrera', $encuesta->carrera)" required />
-
+                                    <br>                                                                  
+                                    <div class="mt-4">
+                                        <x-input-label for="carrera" :value="__('Carrera')" />
+                                        <select id="carrera" name="carrera" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                                            <option value="" disabled selected>Select Carrera</option>
+                                            @foreach($carreras as $carrera)
+                                                <option value="{{ $carrera }}">{{ $carrera }}</option>
+                                            @endforeach
+                                        </select>
+                                        <x-input-error :messages="$errors->get('carrera')" class="mt-2" />
+                                    </div>
                                 </div>
                             </div>
                         </div>                                                           
