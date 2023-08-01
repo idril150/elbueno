@@ -27,12 +27,19 @@ class EncuestaController extends Controller
         return view('encuestas.create', compact('carreras'));
     }
 
-    public function store(StoreEncuesta $request){     
-        
-        $encuesta = Encuesta::create($request->nombre);
+    public function store(StoreEncuesta $request)
+{     
+    // Crear una nueva instancia de la encuesta
+    $encuesta = new Encuesta();
+    $encuesta->nombre = $request->input('nombre');
+    // Agrega aquí los campos adicionales de la encuesta
 
-        return redirect()->route('encuestas.show', $encuesta);
-    }
+    // Guardar la encuesta en la base de datos
+    $encuesta->save();
+
+    return redirect()->route('encuestas.show', $encuesta->id)->with('success', 'Encuesta creada exitosamente.');
+}
+
 
     public function show($id){
     $encuesta = Encuesta::findOrFail($id);
