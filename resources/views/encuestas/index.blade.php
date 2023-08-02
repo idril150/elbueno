@@ -4,6 +4,7 @@
             {{ __('Listado de encuestas') }}
         </h2>
         <x-aaz href="{{ route('encuestas.create')}}" class="text-center">crear encuesta</x-aaz>
+        <a href="{{route('encuestas.create_cord')}}">hola</a>
     </x-slot>
 
     <div class="py-12">

@@ -29,6 +29,7 @@ Route::get('/', function () {
 
 // Rutas para la creacion y edicion de encuestas
 Route::resource('encuestas', EncuestaController::class)->middleware('can:encuestas.index'); 
+Route::get('encuestas/create_cord', [EncuestaController::class, 'create_cord'])->name('encuestas.create_cord');
 Route::put('encuestas/{encuesta}', [EncuestaController::class, 'update'])->name('encuestas.update');
 Route::post('encuestas/{encuesta}', [EncuestaController::class, 'cambiarEstado'])->name('encuestas.cambiarEstado');
 Route::post('encuestas/{encuesta}/guardarRespuestas', [EncuestaController::class, 'guardarRespuestas'])->name('encuestas.guardarRespuestas');

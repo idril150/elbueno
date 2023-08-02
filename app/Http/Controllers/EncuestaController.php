@@ -27,12 +27,18 @@ class EncuestaController extends Controller
         return view('encuestas.create', compact('carreras'));
     }
 
+    public function create_cord() {
+        $carreras = Carrera::pluck('nombre')->toArray();
+        $user = auth()->user();
+        $carrerau = $user->carrera;
+        return view('encuestas.create_cord', compact('carreras', 'carrerau'));
+    }
+    
+
     public function store(StoreEncuesta $request)
 {     
     // Crear una nueva instancia de la encuesta
     $encuesta = Encuesta::create($request->all());
-
-    // Agrega aquí los campos adicionales de la encuesta
 
     // Guardar la encuesta en la base de datos
     $encuesta->save();
