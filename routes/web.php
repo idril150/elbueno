@@ -35,7 +35,7 @@ Route::post('encuestas/{encuesta}', [EncuestaController::class, 'cambiarEstado']
 Route::post('encuestas/{encuesta}/guardarRespuestas', [EncuestaController::class, 'guardarRespuestas'])->name('encuestas.guardarRespuestas');
 Route::get('encuestas/{id}/exportar', [EncuestaController::class, 'exportResults'])->name('encuestas.export');
 
-
+Route::resource('encuestascord', EncuestaController::class)->middleware('can:encuestascord.index'); 
 
 // Rutas para la creacion y edicion de preguntas
 Route::resource('preguntas', PreguntaController::class)->middleware('can:preguntas.index')->except(['Create']);
