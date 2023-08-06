@@ -10,8 +10,7 @@
                 <!-- Campo de edicion de nombre -->
                 <div class="ml-4">
                     <div class="grid grid-cols-12 p-6">
-                        <div class="col-span-9">                                                            
-                            <x-p><strong>periodo: </strong>{{$encuesta->periodo}}</x-p>
+                        <div class="col-span-9">                                                                                        
                             <x-p><strong>periodo: </strong>{{$encuesta->periodo}}</x-p>
                             <x-p><strong>Area: </strong>{{$encuesta->carrera}}</x-p>
                             <x-p><strong>estado: </strong>
@@ -25,7 +24,7 @@
                         </div>
                             
                         <div class="text-end col-span-3 ">
-                            <x-aa href="{{route('encuestas.edit',$encuesta)}}" >Editar informacion</x-aa>
+                            <x-aa href="{{ route('encuestascord.edit', $encuesta->id) }}">Editar información</x-aa>
                             <br><br><br>
                             <!-- resources/views/some_view.blade.php -->
                             <x-aaz href="{{ route('preguntas.create', $encuesta)}}" class=" text-center">agregar pregunta</x-aaz>
@@ -39,34 +38,6 @@
                             <div class="col-span-8">
                                 <x-h4>{{ $pregunta->texto }}</x-h4>         
                                 @if ($pregunta->tipo == 0)
-                                    <!-- Pregunta de opción múltiple -->
-                                    {{-- @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
-                                        <div class="container">
-                                            <div class="grid grid-cols-12 p-4">
-                                                <div class="col-span-10">
-                                                    <x-li>{{ $respuesta->texto }}</x-li>
-                                                </div>
-                                                <div class="container text-center">
-                                                    <div class="grid grid-flow-col gap-3">
-                                                        <div>
-                                                            <x-aa href="{{ route('respuestas.edit', $respuesta->id)}}">editar</x-aa>
-                                                        </div>
-                                                        <div class="block">
-                                                            <form action="{{ route('respuestas.cambiarEstado', $respuesta->id) }}" method="POST">
-                                                                @csrf
-                                                                @method('put')
-                                                                <input type="hidden" name="estado" value="0">
-                                                                <x-elim-button class="ml-4" onclick="return confirm('¿Estás seguro de que deseas eliminar la respuesta?')">
-                                                                    {{ __('eliminar') }}
-                                                                </x-elim-button>                                                        
-                                                                <br>
-                                                            </form>
-                                                        </div>
-                                                    </div>                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach --}}
                                     @foreach ($pregunta->respuestas->where('estado', 1) as $respuesta)
                                     <div class="container">
                                         <div class="grid grid-cols-12 p-4">

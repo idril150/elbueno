@@ -14,17 +14,18 @@ use App\Exports\EncuestaResultsExport;
 use App\Models\Carrera;
 use Maatwebsite\Excel\Facades\Excel;
 
-class EncuestaController extends Controller
+class EncuestacordController extends Controller
 {
     public function index(){
         $user = auth()->user();
-        $encuestas = Encuesta::where('estado', 1)/*->where('carrera', $user->carrera)*/->orderBy('id', 'desc')->paginate();
+        $encuestas = Encuesta::where('estado', 1)->where('carrera', $user->carrera)->orderBy('id', 'desc')->paginate();
         return view('encuestascord.index', compact('encuestas'));
     }
 
     public function create(){
-        $carreras = Carrera::pluck('nombre')->toArray();
-        return view('encuestascord.create', compact('carreras'));
+        $user = auth()->user();
+        $carrera = $user->carrera;        
+        return view('encuestascord.create', compact('carrera'));
     }
     
 
@@ -46,19 +47,18 @@ class EncuestaController extends Controller
     return view('encuestascord.show', compact('encuesta', 'preguntas'));
     }
 
-    public function edit(Encuesta $encuesta){
-        $carreras = Carrera::pluck('nombre')->toArray();
-        return view('encuestascord.edit', compact('encuesta', 'carreras'));
+    public function edit($id){       
+        // return view('encuestascord.edit', compact('encuesta'));
+        // return $encuesta;
+        $encuesta = Encuesta::findOrFail($id);
+    // Resto del código
+        return view('encuestascord.edit', compact('encuesta'));
     }
 
-    public function update(Request $request,Encuesta $encuesta){
-        // $request->validate([
-        //     'name' => 'required',
-        //     'periodo' => 'required',
-        //     'estado' => 'required'
-        // ]);
-        $encuesta->update($request->all());
-        return redirect()->route('encuestascord.show', $encuesta);
+    public function update(Request $request,Encuesta $encuestascord){        
+        
+        $encuestascord->update($request->all());
+        return redirect()->route('encuestascord.show', $encuestascord);
     }
 
     public function cambiarEstado(Encuesta $encuesta, Request $request){

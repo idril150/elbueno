@@ -3,8 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Listado de encuestas') }}
         </h2>
-        <x-aaz href="{{ route('encuestas.create')}}" class="text-center">crear encuesta</x-aaz>
-        <a href="{{route('encuestas.create_cord')}}">hola</a>
+        <x-aaz href="{{ route('encuestas.create')}}" class="text-center">crear encuesta</x-aaz>        
     </x-slot>
 
     <div class="py-12">
