@@ -58,7 +58,7 @@ Route::put('respuestas/{pregunta}', [RespuestaController::class, 'cambiarestado'
 Route::resource('responders', responderController::class)->middleware('can:responders.index');
 
 // Rutas para la creacion y edicion de usuarios
-Route::resource('users', UserController::class)->middleware('can:users.index');
+Route::resource('users', UserController::class)->middleware('can:users.index');                                                                                                                                                                                         
 Route::put('users/{user}', [UserController::class, 'actualizar'])->name('users.actualizar');
 Route::get('users/{user}', 'UserController@show')->name('users.show');
 Route::get('users/exportar', [UserController::class, 'exportUsers'])->name('users.export');
