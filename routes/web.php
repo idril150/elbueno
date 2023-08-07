@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EncuestaController;
+use App\Http\Controllers\EncuestacordController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\responderController;
 use App\Http\Controllers\RespuestaController;
@@ -35,7 +36,12 @@ Route::post('encuestas/{encuesta}', [EncuestaController::class, 'cambiarEstado']
 Route::post('encuestas/{encuesta}/guardarRespuestas', [EncuestaController::class, 'guardarRespuestas'])->name('encuestas.guardarRespuestas');
 Route::get('encuestas/{id}/exportar', [EncuestaController::class, 'exportResults'])->name('encuestas.export');
 
+Route::resource('encuestascord', EncuestacordController::class)->middleware('can:encuestascord.index'); 
 
+Route::put('encuestascord/{encuesta}', [EncuestacordController::class, 'update'])->name('encuestascord.update');
+Route::post('encuestascord/{encuesta}', [EncuestacordController::class, 'cambiarEstado'])->name('encuestascord.cambiarEstado');
+Route::post('encuestascord/{encuesta}/guardarRespuestas', [EncuestacordController::class, 'guardarRespuestas'])->name('encuestascord.guardarRespuestas');
+Route::get('encuestascord/{id}/exportar', [EncuestacordController::class, 'exportResults'])->name('encuestascord.export');
 
 // Rutas para la creacion y edicion de preguntas
 Route::resource('preguntas', PreguntaController::class)->middleware('can:preguntas.index')->except(['Create']);
