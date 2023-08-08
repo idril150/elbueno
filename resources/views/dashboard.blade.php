@@ -25,6 +25,13 @@
                     </a>
                 </div>
                 @endcan
+                @can('encuestascord.index')                                 
+                <div class="p-6">
+                    <a href="{{ route('encuestascord.index') }}" class="text-white bg-purple-500 hover:bg-purple-700 font-bold py-2 px-4 rounded">
+                        {{ __('Listado de encuestas') }}
+                    </a>
+                </div>
+                @endcan
                 @can('responders.index')
                 <div class="p-6">
                     <a href="{{ route('responders.index') }}" class="text-white bg-purple-500 hover:bg-purple-700 font-bold py-2 px-4 rounded">

@@ -38,21 +38,21 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'encuestas.store'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.create'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.edit'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestas.index'])->syncRoles([$admin, $manager]);;
+        Permission::create(['name' => 'encuestas.index'])->syncRoles([$admin]);;
         Permission::create(['name' => 'encuestas.destroy'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.cambiarEstado'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.update'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.guardarRespuestas'])->syncRoles([$admin, $manager]);;
 
-        Permission::create(['name' => 'encuestascord.show'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestascord.store'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestascord.create'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestascord.edit'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestascord.index'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestascord.destroy'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestascord.cambiarEstado'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestascord.update'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestascord.guardarRespuestas'])->syncRoles([$admin, $manager]);;
+        Permission::create(['name' => 'encuestascord.show'])->syncRoles([$manager]);;
+        Permission::create(['name' => 'encuestascord.store'])->syncRoles([$manager]);;
+        Permission::create(['name' => 'encuestascord.create'])->syncRoles([ $manager]);;
+        Permission::create(['name' => 'encuestascord.edit'])->syncRoles([$manager]);;
+        Permission::create(['name' => 'encuestascord.index'])->syncRoles([$manager]);;
+        Permission::create(['name' => 'encuestascord.destroy'])->syncRoles([$manager]);;
+        Permission::create(['name' => 'encuestascord.cambiarEstado'])->syncRoles([$manager]);;
+        Permission::create(['name' => 'encuestascord.update'])->syncRoles([$manager]);;
+        Permission::create(['name' => 'encuestascord.guardarRespuestas'])->syncRoles([$manager]);;
 
         // Permisos para la creacion y edicion del curd de preguntas
         Permission::create(['name' => 'preguntas.show'])->syncRoles([$admin, $manager]);;

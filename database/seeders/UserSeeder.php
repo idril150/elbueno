@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Jorge',
             'email' => 'Jorge@manager.com',
-            'carrera' => 'sistemas',
+            'carrera' => 'quimica',
             'email_verified_at' => now(),
             'Ncontrol' => '18270000',
             'telefono' => '9612171193',
