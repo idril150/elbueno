@@ -9,6 +9,7 @@ use App\Http\Controllers\RespuestaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Jetstream\Http\Controllers\Livewire\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/pruebas', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // Rutas para la creacion y edicion de encuestas

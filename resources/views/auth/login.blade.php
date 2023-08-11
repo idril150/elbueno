@@ -1,4 +1,5 @@
 <x-guest-layout>
+    
 
     <div class="login-container">
         <!-- Session Status -->
@@ -33,6 +34,7 @@
                     <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Recuerdame') }}</span>
                 </label>
             </div>
+            
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
@@ -40,6 +42,13 @@
                         {{ __('Olvidaste tu contreña?') }}
                     </a>
                 @endif
+
+                <div class="flex items-center justify-end mt-4">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                        {{ __('No tienes una cuenta? Regístrate') }}
+                    </a>
+                </div>
+                
 
                 <x-primary-button class="ml-3">
                     {{ __('Iniciar Sesion') }}
