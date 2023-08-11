@@ -3,9 +3,7 @@
 </svg> --}}
 
 <div style="display: flex; justify-content: space-between;">
-    @unless(request()->routeIs('dashboard', 'profile.edit','responders.index','responders.show','preguntas.create'
-    ,'preguntas.edit','users.edit','users.index','encuestas.index','encuestas.show','encuestas.edit','encuestas.create'
-    ,'respuestas.create','repuestas.edit'))
+    @unless(request()->routeIs(''))
     <a href="/">
         <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 50px;">
     </a>
