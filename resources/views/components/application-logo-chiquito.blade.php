@@ -4,10 +4,11 @@
 
 <div style="display: flex; justify-content: space-between;">
     @unless(request()->routeIs(''))
-    <a href="/">
+    <a href="dashboard">
         <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 50px;">
     </a>
     @endunless
 </div>
+
 
 
