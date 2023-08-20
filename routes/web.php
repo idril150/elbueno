@@ -9,6 +9,7 @@ use App\Http\Controllers\RespuestaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Jetstream\Http\Controllers\Livewire\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +26,12 @@ Route::get('/pruebas', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // Rutas para la creacion y edicion de encuestas
 Route::resource('encuestas', EncuestaController::class)->middleware('can:encuestas.index'); 
+Route::get('encuestas/create_cord', [EncuestaController::class, 'create_cord'])->name('encuestas.create_cord'); 
 Route::put('encuestas/{encuesta}', [EncuestaController::class, 'update'])->name('encuestas.update');
 Route::post('encuestas/{encuesta}', [EncuestaController::class, 'cambiarEstado'])->name('encuestas.cambiarEstado');
 Route::post('encuestas/{encuesta}/guardarRespuestas', [EncuestaController::class, 'guardarRespuestas'])->name('encuestas.guardarRespuestas');
@@ -57,7 +59,7 @@ Route::put('respuestas/{pregunta}', [RespuestaController::class, 'cambiarEstado'
 Route::resource('responders', responderController::class)->middleware('can:responders.index');
 
 // Rutas para la creacion y edicion de usuarios
-Route::resource('users', UserController::class)->middleware('can:users.index');
+Route::resource('users', UserController::class)->middleware('can:users.index');                                                                                                                                                                                         
 Route::put('users/{user}', [UserController::class, 'actualizar'])->name('users.actualizar');
 Route::get('users/{user}', 'UserController@show')->name('users.show');
 Route::get('users/exportar', [UserController::class, 'exportUsers'])->name('users.export');

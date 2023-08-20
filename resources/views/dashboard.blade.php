@@ -18,9 +18,16 @@
                 </div>
                 @endcan
 
-                @can('encuestas.index')                                 
+                @can('users.index')                                 
                 <div class="p-6">
                     <a href="{{ route('encuestas.index') }}" class="text-white bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded">
+                        {{ __('Listado de encuestas') }}
+                    </a>
+                </div>
+                @endcan
+                @can('encuestascord.index')                                 
+                <div class="p-6">
+                    <a href="{{ route('encuestascord.index') }}" class="text-white bg-purple-500 hover:bg-purple-700 font-bold py-2 px-4 rounded">
                         {{ __('Listado de encuestas') }}
                     </a>
                 </div>

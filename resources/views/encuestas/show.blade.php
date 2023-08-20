@@ -12,7 +12,7 @@
                     <div class="grid grid-cols-12 p-6">
                         <div class="col-span-9">                                                            
                             <x-p><strong>periodo: </strong>{{$encuesta->periodo}}</x-p>
-                            <x-p><strong>periodo: </strong>{{$encuesta->periodo}}</x-p>
+                            {{-- <x-p><strong>periodo: </strong>{{$encuesta->periodo}}</x-p> --}}
                             <x-p><strong>Area: </strong>{{$encuesta->carrera}}</x-p>
                             <x-p><strong>estado: </strong>
                             @php
