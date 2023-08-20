@@ -76,7 +76,7 @@
                                             </div>
                                             <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
                                             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                                                <form action="{{ route('respuestas.update', $respuesta->id) }}" method="POST">
+                                                <form action="{{ route('respuestas.update', $respuesta) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="p-6">

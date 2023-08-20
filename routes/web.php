@@ -52,8 +52,14 @@ Route::post('preguntas/{pregunta}', [PreguntaController::class, 'cambiarestado']
 
 // Rutas para la creacion y edicion de respuestas
 Route::get('respuestas/create/{pregunta_id}', [RespuestaController::class, 'create'])->name('respuestas.createe');
-Route::resource('respuestas', RespuestaController::class);
+
+Route::put('respuestas/editar/{respuesta}', [RespuestaController::class, 'update'])->name('respuestas.update');
+
 Route::put('respuestas/{respuesta}', [RespuestaController::class, 'cambiarEstado'])->name('respuestas.cambiarEstado');
+// Route::resource('respuestas', RespuestaController::class);
+
+
+
 
 // Rutas para responder las preguntas
 Route::resource('responders', responderController::class)->middleware('can:responders.index');

@@ -22,7 +22,7 @@ class CarrerasSeeder extends Seeder
             'Ingeniería Bioquímica',
             'Ingeniería en Gestión Empresarial',
             'Ingeniería Química',
-            'Licenciatura en Administración',
+            'Licenciatura Logística',
             'Licenciatura en Contaduría'
         ];
 
