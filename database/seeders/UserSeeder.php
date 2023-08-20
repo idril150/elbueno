@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Electrónica',
             'email' => 'Electronica_cord@tecnm.com',
-            'carrera' => 'IIngeniería Electrónica',
+            'carrera' => 'Ingeniería Electrónica',
             'email_verified_at' => now(),
             'Ncontrol' => '00000000',
             'telefono' => '0000000000',
