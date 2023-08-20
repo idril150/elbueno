@@ -49,7 +49,8 @@ class RespuestaController extends Controller
     }
 
     public function cambiarEstado(Respuesta $respuesta, Request $request){
-        $respuesta->estado = $request->estado;
+        
+        $respuesta->estado = $request->estado;        
         $respuesta->save();
         return redirect()->back();  
     }
