@@ -38,11 +38,12 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'encuestas.store'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.create'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.edit'])->syncRoles([$admin, $manager]);;
-        Permission::create(['name' => 'encuestas.index'])->syncRoles([$admin]);;
+        Permission::create(['name' => 'encuestas.index'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.destroy'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.cambiarEstado'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.update'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'encuestas.guardarRespuestas'])->syncRoles([$admin, $manager]);;
+        Permission::create(['name' => 'encuestas.create_cord'])->syncRoles([$manager]);;
 
         Permission::create(['name' => 'encuestascord.show'])->syncRoles([$manager]);;
         Permission::create(['name' => 'encuestascord.store'])->syncRoles([$manager]);;
@@ -62,6 +63,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'preguntas.destroy'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'preguntas.update'])->syncRoles([$admin, $manager]);;
         Permission::create(['name' => 'preguntas.cambiarEstado'])->syncRoles([$admin, $manager]);;
+        Permission::create(['name' => 'preguntas.store'])->syncRoles([$admin, $manager]);;
         
          // Permisos para la creacion y edicion del curd de respuestas
           Permission::create(['name' => 'respuestas.show'])->syncRoles([$admin, $manager]);;
@@ -72,6 +74,7 @@ class RoleSeeder extends Seeder
           Permission::create(['name' => 'respuestas.destroy'])->syncRoles([$admin, $manager]);;
           Permission::create(['name' => 'respuestas.update'])->syncRoles([$admin, $manager]);;
           Permission::create(['name' => 'respuestas.cambiarEstado'])->syncRoles([$admin, $manager]);;
+          Permission::create(['name' => 'respuestas.store'])->syncRoles([$admin, $manager]);;
 
            // Permisos para responder las encuestas
            Permission::create(['name' => 'responders.index'])->syncRoles([$user]);;
