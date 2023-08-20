@@ -57,7 +57,8 @@
                                                             @csrf
                                                             @method('put')
                                                             <input type="hidden" name="estado" value="0">
-                                                            <input type="hidden" name="texto" :value="old('name', $respuesta->texto)">
+                                                            <x-input-label for="texto" :value="__('Texto')" />
+                                                            <x-text-input class="block mt-1 w-full" type="text" name="texto" required />
                                                             <x-elim-button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar la respuesta?')" class="border-dashed border-2 border-red-400 bg-red-400 py-0.25 rounded-lg text-center">Eliminar respuesta</x-elim-button>
                                                             <br>
                                                         </form>
