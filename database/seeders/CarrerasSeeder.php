@@ -18,12 +18,13 @@ class CarrerasSeeder extends Seeder
             'Ingeniería en Sistemas Computacionales',
             'Ingeniería Industrial',
             'Ingeniería Electrónica',
+            'Ingeniería Electrica',
             'Ingeniería Mecánica',
             'Ingeniería Bioquímica',
             'Ingeniería en Gestión Empresarial',
             'Ingeniería Química',
-            'Licenciatura Logística',
-            'Licenciatura en Contaduría'
+            'Ingeniería en Logística',
+            'Ingeniería Mecatrónica'
         ];
 
         foreach ($carreras as $carrera) {
