@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRespuesta;
+use Spatie\Permission\Models\Role;
 use App\Models\Respuesta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,10 +30,14 @@ class RespuestaController extends Controller
         $pregunta = $respuesta->pregunta;
         $encuestaId = $pregunta->encuesta_id;
         // return $respuesta;
-        $redirectTo = Auth::user()->type === 'admin' 
-        ? route('encuestas.show', $encuestaId)
-        : route('encuestascord.show', $encuestaId);
-
+        if (Auth::user()->hasRole('admin')) {
+            $redirectTo = route('encuestas.show', $pregunta->encuesta_id);
+        } elseif (Auth::user()->hasRole('manager')) {
+            $redirectTo = route('encuestascord.show', $pregunta->encuesta_id);
+        } else { 
+            // Si el usuario no tiene un rol específico, maneja la redirección aquí
+        }
+        
         return redirect($redirectTo);
     }
 
