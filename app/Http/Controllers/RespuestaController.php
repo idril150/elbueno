@@ -42,7 +42,7 @@ class RespuestaController extends Controller
     }
 
     public function update(Request $request, Respuesta $respuesta){
-        dd($request);
+        
         $respuesta->texto = $request->input('respuesta_texto');
         $respuesta->save();
     
