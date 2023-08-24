@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRespuesta;
 use App\Models\Respuesta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RespuestaController extends Controller
 {
@@ -28,8 +29,11 @@ class RespuestaController extends Controller
         $pregunta = $respuesta->pregunta;
         $encuestaId = $pregunta->encuesta_id;
         // return $respuesta;
+        $redirectTo = Auth::user()->type === 'admin' 
+        ? route('encuestas.show', $encuestaId)
+        : route('encuestascord.show', $encuestaId);
 
-        return redirect()->route('encuestas.show', $encuestaId);
+        return redirect($redirectTo);
     }
 
     public function show (Respuesta $respuesta){
