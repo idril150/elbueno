@@ -26,16 +26,7 @@
                                         @endforeach                                        
                             </div>   
                             @elseif($pregunta->tipo==2)
-                            <div >
-                                    {{-- respuestas de pregunta abierta --}}
-
-                                    {{-- <select id="carrera" name="respuestas" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
-                                        <option value="" disabled selected>Select Carrera</option>
-                                        @foreach($pregunta->respuestas as $respuesta)
-                                            <option value="{{ $respuesta->id }}">{{ $respuesta->texto }}</option>
-                                        @endforeach
-                                    </select>
-                                   --}}
+                            <div >          
                                    <select id="respuestas" name="respuestas[{{ $pregunta->id }}]" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
                                     <option value="" disabled selected>seleccionar respuesta</option>
                                     @foreach($pregunta->respuestas as $respuesta)
@@ -43,15 +34,6 @@
                                     @endforeach
                                     </select>
                                     
-                                   
-
-
-                                        {{-- @foreach($pregunta->respuestas as $respuesta)
-                                        <label>
-                                            <x-radio-input name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}" label="{{ $respuesta->texto }}" required />                    
-                                        </label>
-                                        <br>
-                                        @endforeach                                          --}}
                             </div>   
                             @else
                             <div>
