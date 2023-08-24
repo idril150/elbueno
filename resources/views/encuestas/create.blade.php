@@ -26,7 +26,7 @@
                                         <br>
                                         <x-input-label for="carrera" :value="__('Carrera')" />
                                         <select id="carrera" name="carrera" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
-                                            <option value="" disabled selected>Select Carrera</option>
+                                            <option value="" disabled selected>Seleccionar Carrera</option>
                                             @foreach($carreras as $carrera)
                                                 <option value="{{ $carrera }}">{{ $carrera }}</option>
                                             @endforeach
