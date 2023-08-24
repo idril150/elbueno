@@ -82,18 +82,31 @@ class EncuestaController extends Controller
 
     public function guardarRespuestas(Responde $responde, Request $request){
         $user_id = auth()->id(); // Obtener el ID del usuario autenticado
+        
         $respuestas = $request->input('respuestas', []);
+        // dd($respuestas);
         foreach ($respuestas as $preguntaId => $respuestaValues) {
             $pregunta = Pregunta::findOrFail($preguntaId);
     
-            if ($pregunta->tipo == 1) {
+            if ($pregunta->tipo == 0) {
                 // Pregunta cerrada
                     $responde = new Responde();
                     $responde->user_id = $user_id;
                     $responde->respuesta_id = $respuestaValues;
                     $responde->save();
                 
-            } else {
+            } 
+
+            elseif ($pregunta->tipo == 2) {
+                // Pregunta cerrada
+                    $responde = new Responde();
+                    $responde->user_id = $user_id;
+                    $responde->respuesta_id = $respuestaValues;
+                    $responde->save();
+                
+            }
+            
+            else {
                 // dd($respuestaValues);                   
                     $respuesta = new Respuesta();
                     $respuesta->texto = $respuestaValues;
