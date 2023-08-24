@@ -31,7 +31,8 @@
                                         <x-input-label for="tipo" :value="__('seleccione el tipo de pregunta')" />
                                         <x-radio-input name="tipo" value="1" label="abierta" required />      
                                         <br>                                  
-                                        <x-radio-input name="tipo" value="0" label="cerrada" required />  
+                                        <x-radio-input name="tipo" value="0" label="opcion multiple" required />
+                                        <x-radio-input name="tipo" value="2" label="listado de opciones" required />    
                                         <input type="hidden" name="encuesta_id" value="{{ $encuesta_id }}"> 
                                         <input type="hidden" name="estado" value="1">
                                                                              

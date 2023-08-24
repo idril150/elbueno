@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->id();
             $table->text('texto');
-            $table->boolean('tipo');
+            $table->integer('tipo');
             $table->boolean('estado');
             $table->unsignedBigInteger('encuesta_id');
             $table->timestamps();
