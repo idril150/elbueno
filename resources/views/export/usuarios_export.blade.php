@@ -3,7 +3,7 @@
         <tr>
             <th>Número de Control</th>
             <th>Nombre</th>
-            <th>Email</th>
+            <th>Correo Electrónico</th>
             <th>Teléfono</th>
             <th>Carrera</th>
         </tr>
