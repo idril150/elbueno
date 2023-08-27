@@ -73,38 +73,114 @@ class EncuestacordController extends Controller
         
      }
 
-    public function guardarRespuestas(Responde $responde, Request $request){
-        $user_id = auth()->id(); // Obtener el ID del usuario autenticado
+     public function guardarRespuestas(Request $request) {
+        $user_id = auth()->id();
         $respuestas = $request->input('respuestas', []);
-        foreach ($respuestas as $preguntaId => $respuestaValues) {
+    
+        foreach ($respuestas as $preguntaId => $respuestaData) {
             $pregunta = Pregunta::findOrFail($preguntaId);
+            $respuestaValue = $respuestaData[$pregunta->tipo];
     
-            if ($pregunta->tipo == 1) {
-                // Pregunta cerrada
-                    $responde = new Responde();
-                    $responde->user_id = $user_id;
-                    $responde->respuesta_id = $respuestaValues;
-                    $responde->save();
-                
+            if ($pregunta->tipo == 1 || $pregunta->tipo == 2) {
+                // Pregunta cerrada o de selección
+                $responde = new Responde();
+                $responde->user_id = $user_id;
+                $responde->respuesta_id = $respuestaValue;
+                $responde->save();
             } else {
-                // dd($respuestaValues);                   
-                    $respuesta = new Respuesta();
-                    $respuesta->texto = $respuestaValues;
-                    $respuesta->pregunta_id = $preguntaId;
-                    $respuesta->estado = 1;
-                    $respuesta->save();
-    
-                    $responde = new Responde();
-                    $responde->user_id = $user_id;
-                    $responde->respuesta_id = $respuesta->id;
-                    $responde->save();
+                // Pregunta abierta
+                $respuesta = new Respuesta();
+                $respuesta->texto = $respuestaValue;
+                $respuesta->pregunta_id = $preguntaId;
+                $respuesta->estado = 1;
+                $respuesta->save();
             }
         }
-        Session::flash('success', 'Encuesta respondida exitosamente');
-
-        return view('dashboard');
     
+        Session::flash('success', 'Encuesta respondida exitosamente');
+        return view('dashboard');
     }
+    
+    
+    
+    
+
+    //  public function guardarRespuestas(Responde $responde, Request $request){
+    //     $user_id = auth()->id(); // Obtener el ID del usuario autenticado
+    //     $allRespuestas = $request->input('all_respuestas', []);
+    
+    //     foreach ($allRespuestas as $preguntaId => $respuestaValues) {
+    //         $pregunta = Pregunta::findOrFail($preguntaId);
+    
+    //         if ($pregunta->tipo == 1 || $pregunta->tipo == 2) {
+    //             // Pregunta cerrada o de selección
+    //             $responde = new Responde();
+    //             $responde->user_id = $user_id;
+    //             $responde->respuesta_id = $respuestaValues;
+    //             $responde->save();
+    //         } else {
+    //             // Pregunta abierta
+    //             $respuesta = new Respuesta();
+    //             $respuesta->texto = $respuestaValues;
+    //             $respuesta->pregunta_id = $preguntaId;
+    //             $respuesta->estado = 1;
+    //             $respuesta->save();
+    
+    //             $responde = new Responde();
+    //             $responde->user_id = $user_id;
+    //             $responde->respuesta_id = $respuesta->id;
+    //             $responde->save();
+    //         }
+    //     }
+        
+    //     Session::flash('success', 'Encuesta respondida exitosamente');
+    //     return view('dashboard');
+    // }
+
+    //  public function guardarRespuestas(Responde $responde, Request $request){
+    //     $user_id = auth()->id(); // Obtener el ID del usuario autenticado
+        
+    //     $respuestas = $request->input('respuestas', []);
+    //     // dd($respuestas);
+    //     foreach ($respuestas as $preguntaId => $respuestaValues) {
+    //         $pregunta = Pregunta::findOrFail($preguntaId);
+    
+    //         if ($pregunta->tipo == 0) {
+    //             // Pregunta cerrada
+    //                 $responde = new Responde();
+    //                 $responde->user_id = $user_id;
+    //                 $responde->respuesta_id = $respuestaValues;
+    //                 $responde->save();
+                
+    //         } 
+
+    //         elseif ($pregunta->tipo == 2) {
+    //             // Pregunta cerrada
+    //                 $responde = new Responde();
+    //                 $responde->user_id = $user_id;
+    //                 $responde->respuesta_id = $respuestaValues;
+    //                 $responde->save();
+                
+    //         }
+            
+    //         else {
+    //             // pregunta abierta               
+    //                 $respuesta = new Respuesta();
+    //                 $respuesta->texto = $respuestaValues;
+    //                 $respuesta->pregunta_id = $preguntaId;
+    //                 $respuesta->estado = 1;
+    //                 $respuesta->save();
+    
+    //                 $responde = new Responde();
+    //                 $responde->user_id = $user_id;
+    //                 $responde->respuesta_id = $respuesta->id;
+    //                 $responde->save();
+    //         }
+    //     }
+    //     Session::flash('success', 'Encuesta respondida exitosamente');
+
+    //     return view('dashboard');    
+    // }
 
     public function exportResults($id)
     {
