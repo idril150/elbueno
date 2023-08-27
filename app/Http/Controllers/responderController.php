@@ -22,7 +22,12 @@ class responderController extends Controller
         // return view('responders.show', compact('encuesta', 'preguntas'));
 
         $encuesta = Encuesta::findOrFail($id);
-        $preguntas = $encuesta->preguntas->where('estado', 1);
+        // $preguntas = $encuesta->preguntas->where('estado', 1)->paginate(8);
+        $preguntas = Encuesta::findOrFail($id)
+            ->preguntas()
+            ->where('estado', 1)
+            ->paginate(8);
+        
         return view('responders.show', compact('encuesta', 'preguntas'));
         }
 }
