@@ -31,6 +31,6 @@ class responderController extends Controller
             session()->put('respuestas', []);
             
         
-        return view('responders.show', compact('encuesta', 'preguntas',));
+        return view('responders.show', compact('encuesta', 'preguntas'));
         }
 }
