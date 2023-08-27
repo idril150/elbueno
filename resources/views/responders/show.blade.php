@@ -16,36 +16,32 @@
                     <div class="ml-4">
                         <x-input-label for=$pregunta :value="__($pregunta->texto)" />
                             @if($pregunta->tipo==0)
-                            <div >
-                                    {{-- respuestas de pregunta abierta --}}
-                                        @foreach($pregunta->respuestas as $respuesta)
-                                        <label>
-                                            <x-radio-input name="respuestas[{{ $pregunta->id }}]" value="{{ $respuesta->id }}" label="{{ $respuesta->texto }}" required />                    
-                                        </label>
-                                        <br>
-                                        @endforeach                                        
+                            <div>
+                                @foreach($pregunta->respuestas as $respuesta)
+                                    <label>
+                                        <x-radio-input name="respuestas_{{ $pregunta->id }}" value="{{ $respuesta->id }}" label="{{ $respuesta->texto }}" required />                    
+                                    </label>
+                                    <br>
+                                @endforeach                                        
                             </div>   
-                            @elseif($pregunta->tipo==2)
-                            <div >          
-                                   <select id="respuestas" name="respuestas[{{ $pregunta->id }}]" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                        @elseif($pregunta->tipo==2)
+                            <div>          
+                                <select id="respuestas" name="respuestas_{{ $pregunta->id }}" class="block w-full mt-1 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
                                     <option value="" disabled selected>seleccionar respuesta</option>
                                     @foreach($pregunta->respuestas as $respuesta)
                                         <option value="{{ $respuesta->id }}">{{ $respuesta->texto }}</option>
                                     @endforeach
-                                    </select>
-                                    
+                                </select>
                             </div>   
-                            @else
+                        @else
                             <div>
                                 <div class="grid grid-cols-12 ">
-                                    {{-- ingresar respuesta de pregunta abierta --}}
                                     <div class="col-span-10">
-                                        <x-text-input class="block mt-1 w-full" type="text" name="respuestas[{{ $pregunta->id }}]" required />
-                                        
+                                        <x-text-input class="block mt-1 w-full" type="text" name="respuestas_{{ $pregunta->id }}" required />
                                     </div>
                                 </div>
                             </div>          
-                            @endif                                   
+                        @endif                                  
                     </div>
                     @endforeach
 

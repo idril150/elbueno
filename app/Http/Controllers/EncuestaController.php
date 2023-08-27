@@ -84,10 +84,10 @@ class EncuestaController extends Controller
      public function guardarRespuestas(Request $request, $id) {
         $user_id = auth()->id();
         $preguntas = Encuesta::findOrFail($id)->preguntas()->where('estado', 1)->get();
-    
+        
         foreach ($preguntas as $pregunta) {
             $respuestaValue = $request->input('respuestas_'.$pregunta->id);
-    
+            
             if ($pregunta->tipo == 0 || $pregunta->tipo == 2) {
                 // Pregunta cerrada o de selección
                 $responde = new Responde();
@@ -96,6 +96,11 @@ class EncuestaController extends Controller
                 $responde->save();
             } else {
                 // Pregunta abierta
+                if (empty($respuestaValue)) {
+                    // Redirige con mensaje de error si la respuesta está vacía
+                    return redirect()->back()->withErrors(['respuestas_'.$pregunta->id => 'La respuesta no puede estar vacía']);
+                }
+    
                 $respuesta = new Respuesta();
                 $respuesta->texto = $respuestaValue;
                 $respuesta->pregunta_id = $pregunta->id;
@@ -112,6 +117,7 @@ class EncuestaController extends Controller
         Session::flash('success', 'Encuesta respondida exitosamente');
         return view('dashboard');
     }
+    
     
 
     // public function guardarRespuestas(Responde $responde, Request $request){
