@@ -28,9 +28,6 @@ class responderController extends Controller
             ->where('estado', 1)
             ->paginate(8);
         
-            session()->put('respuestas', []);
-            
-        
         return view('responders.show', compact('encuesta', 'preguntas'));
         }
 }
