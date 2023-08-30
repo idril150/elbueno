@@ -1,20 +1,30 @@
 <table>
     <thead>
         <tr>
-            <th>Encuesta</th>
-            <th>Pregunta</th>
-            <th>Respuesta</th>
+            <th>Número de Control</th>
+            
+            @foreach($preguntas as $pregunta)
+                <th>{{ $pregunta->texto }}</th>
+            @endforeach
+
         </tr>
     </thead>
     <tbody>
-        @foreach($preguntas as $pregunta)
-            @foreach($pregunta->respuestas as $respuesta)
-                <tr>
-                    <td>{{ $encuesta->name }}</td>
-                    <td>{{ $pregunta->texto }}</td>
-                    <td>{{ $respuesta->texto }}</td>
-                </tr>
-            @endforeach
+        @foreach($personas as $persona)
+            <tr>
+                <td>{{$persona->Ncontrol}}</td>
+                @foreach($preguntas as $pregunta)
+                    <td>{{ $respuestas->where('Ncontrol', $persona->Ncontrol)->where('pregunta_id', $pregunta->id)->first()->texto }}</td>
+                @endforeach
+{{--                 
+                @foreach($pregunta->respuestas as $respuesta)
+                    <tr>
+                        <th>{{ $encuesta->name }}</th>
+                        {{-- <th>{{ $pregunta->texto }}</th> 
+                        <th>{{ $respuesta->texto }}</th>
+                    </tr>
+                @endforeach --}}
+            </tr>
         @endforeach
     </tbody>
 </table>

@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Models\Encuesta;
 use App\Models\Pregunta;
+use App\Models\Responde;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -26,9 +27,28 @@ class EncuestaResultsExport implements FromView
 
     public function view(): View
     {
+        $respuestas = Responde::select('users.Ncontrol', 'respuestas.*')
+            ->join('users', 'users.id', 'respondes.user_id')
+            ->join('respuestas', 'respuestas.id', 'respondes.respuesta_id')
+            ->join('preguntas', 'preguntas.id', 'respuestas.pregunta_id')
+            ->where('preguntas.encuesta_id', $this->encuesta->id)
+            ->get();
+
+            
+        $personas = Responde::select('users.Ncontrol')
+            ->join('users', 'users.id', 'respondes.user_id')
+            ->join('respuestas', 'respuestas.id', 'respondes.respuesta_id')
+            ->join('preguntas', 'preguntas.id', 'respuestas.pregunta_id')
+            ->where('preguntas.encuesta_id', $this->encuesta->id)
+            ->groupBy('users.Ncontrol')
+            ->get();
+
+        //$personas = $respuestas->groupBy('Ncontrol');
         return view('export.encuesta_results', [
             'encuesta' => $this->encuesta,
             'preguntas' => $this->preguntas,
+            'respuestas' => $respuestas,
+            'personas' => $personas
         ]);
     }
 }

@@ -135,6 +135,17 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
         ])-> assignRole('manager');
 
+        User::create([
+            'name' => 'Mecatrónica',
+            'email' => 'user@tecnm.com',
+            'carrera' => 'Ingeniería Mecatrónica',
+            'email_verified_at' => now(),
+            'Ncontrol' => '00000000',
+            'telefono' => '0000000000',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ])-> assignRole('user');
+
 
     
     }
