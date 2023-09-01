@@ -27,7 +27,7 @@ class EncuestaResultsExport implements FromView
 
     public function view(): View
     {
-        $respuestas = Responde::select('users.Ncontrol', 'respuestas.*')
+        $respuestas = Responde::select('users.Ncontrol', 'users.name', 'respuestas.*')
             ->join('users', 'users.id', 'respondes.user_id')
             ->join('respuestas', 'respuestas.id', 'respondes.respuesta_id')
             ->join('preguntas', 'preguntas.id', 'respuestas.pregunta_id')
@@ -35,7 +35,7 @@ class EncuestaResultsExport implements FromView
             ->get();
 
             
-        $personas = Responde::select('users.Ncontrol')
+        $personas = Responde::select('users.Ncontrol',)
             ->join('users', 'users.id', 'respondes.user_id')
             ->join('respuestas', 'respuestas.id', 'respondes.respuesta_id')
             ->join('preguntas', 'preguntas.id', 'respuestas.pregunta_id')
