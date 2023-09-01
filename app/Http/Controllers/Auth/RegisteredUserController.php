@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Carrera;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
+use Illuminate\Database\Seeder;
 
 class RegisteredUserController extends Controller
 {
@@ -20,8 +23,11 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $carreras = Carrera::pluck('nombre')->toArray(); // Aquí debes obtener la lista de carreras desde tu base de datos o de otra fuente
+
+    return view('auth.register', compact('carreras'));
     }
+    
 
     /**
      * Handle an incoming registration request.
@@ -46,7 +52,9 @@ class RegisteredUserController extends Controller
             'carrera' => $request->carrera,
             'Ncontrol' => $request->Ncontrol,
             'telefono' => $request->telefono,
-        ]);
+        ])-> assignRole('user');
+
+        
 
         event(new Registered($user));
 

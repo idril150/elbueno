@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRespuesta;
+use Spatie\Permission\Models\Role;
 use App\Models\Respuesta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RespuestaController extends Controller
 {
@@ -28,8 +30,15 @@ class RespuestaController extends Controller
         $pregunta = $respuesta->pregunta;
         $encuestaId = $pregunta->encuesta_id;
         // return $respuesta;
-
-        return redirect()->route('encuestas.show', $encuestaId);
+        if (Auth::user()->hasRole('admin')) {
+            $redirectTo = route('encuestas.show', $pregunta->encuesta_id);
+        } elseif (Auth::user()->hasRole('manager')) {
+            $redirectTo = route('encuestascord.show', $pregunta->encuesta_id);
+        } else { 
+            // Si el usuario no tiene un rol específico, maneja la redirección aquí
+        }
+        
+        return redirect($redirectTo);
     }
 
     public function show (Respuesta $respuesta){
@@ -42,16 +51,16 @@ class RespuestaController extends Controller
     }
 
     public function update(Request $request, Respuesta $respuesta){
-    $respuesta->update($request->all());
+        
+        $respuesta->texto = $request->input('respuesta_texto');
+        $respuesta->save();
     
-    $pregunta = $respuesta->pregunta;
-    $encuestaId = $pregunta->encuesta_id;
-    
-    return redirect()->route('encuestas.show', $encuestaId);
+        return redirect()->back()->with('success', 'La respuesta ha sido actualizada correctamente.');
     }
 
     public function cambiarEstado(Respuesta $respuesta, Request $request){
-        $respuesta->estado = $request->estado;
+        
+        $respuesta->estado = $request->estado;        
         $respuesta->save();
         return redirect()->back();  
     }

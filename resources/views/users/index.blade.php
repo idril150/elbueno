@@ -1,52 +1,71 @@
-@extends('layouts.plantilla')
-
-@section('title', 'Usuario')
-
-@section('content')
-<div class="min-h-screen bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
-    <br><br>
-    <div class="container mx-auto">
-        <div class="row">
-            <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
-                    <h2>Listado de usuarios</h2>
-                </div>
-            </div>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Listado de usuarios') }}
+        </h2>
+        <div class="col-span-12 mt-4"> 
+            <a href="{{ route('export') }}" class="text-white bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded">
+                {{ __('Exportar Usuarios') }}
+            </a>
         </div>
-        <table class="table table-bordered mx-auto my-4">
-            <thead>
-                <tr>
-                    <th class="px-4 py-2">Numero de control</th>
-                    <th class="px-4 py-2">Nombre</th> <!-- Nueva columna para el nombre del usuario -->
-                    <th class="px-4 py-2">Usuario Email</th>
-                    <th class="px-4 py-2">Teléfono</th>
-                    <th class="px-4 py-2">Carrera</th>
-                    <th class="px-4 py-2" width="280px">Acción</th>
-                </tr>
-            </thead>
-            <tbody>
+        
+        
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
+            <x-table :data="$users">
+                <x-slot name="header">
+                    <th scope="col" class="w-1/6 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Numero de control
+                    </th>
+                    <th scope="col" class="w-1/6 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Nombre
+                    </th>
+                    <th scope="col" class="w-1/6 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Usuario Email
+                    </th>
+                    <th scope="col" class="w-1/6 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Teléfono
+                    </th>
+                    <th scope="col" class="w-1/6 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Carrera
+                    </th>
+                    <th scope="col" class="w-1/6 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Acción
+                    </th>
+                </x-slot>
+
                 @foreach ($users as $user)
                     <tr>
-                        <td class="border px-4 py-2">{{ $user->Ncontrol }}</td>
-                        <td class="border px-4 py-2">{{ $user->name }}</td> <!-- Mostrar el nombre del usuario -->
-                        <td class="border px-4 py-2">{{ $user->email }}</td>
-                        <td class="border px-4 py-2">{{ $user->telefono }}</td>
-                        <td class="border px-4 py-2">{{ $user->carrera }}</td>
-                        <td class="border px-4 py-2">
-                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                @can('users.edit')                                
-                                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('users.edit', $user->id) }}">Editar</a>
-                                @csrf
-                                
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
-                                @endcan
-                            </form>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            {{ $user->Ncontrol }}
+                        </td>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            {{ $user->name }}
+                        </td>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            {{ $user->email }}
+                        </td>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            {{ $user->telefono }}
+                        </td>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            {{ $user->carrera }}
+                        </td>
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            @can('users.edit')
+                                <a href="{{ route('users.edit', $user->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Editar</a>
+                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">Eliminar</button>
+                                </form>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
-        </table>
+            </x-table>
+        </div>
     </div>
-</div>
-@endsection
+</x-app-layout>

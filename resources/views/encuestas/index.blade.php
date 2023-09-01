@@ -1,50 +1,40 @@
-@extends('layouts.plantilla')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Listado de encuestas') }}
+        </h2>
+        <x-aaz href="{{ route('encuestas.create')}}" class="text-center">crear encuesta</x-aaz>        
+    </x-slot>
 
-@section('title', 'Encuestas')
+    <div class="py-12">
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
-@section('content')
-    <div class="min-h-screen bg-gradient-to-r from-purple-300 via-gray-300 to-teal-300">
-        <div class="container">
-            <br><br>
-            <div class="grid grid-cols-12">
-                <div class="col-span-8 col-start-3">
-                    <div class="container">
-                        <div class="grid grid-cols-1 border-2 border-dashed">
-                            <div>
-                                <h1 class="text-3xl font-semibold">Encuestas para el seguimiento de egresados</h1>
-                                <br>
-                                <a href="{{ route('encuestas.create') }}" class="bg-blue-400 px-4 py-2 text-sm uppercase font-bold text-cyan-50 rounded-lg text-center">Crear encuesta</a>
-                                <br><br>
-                            </div>
-                        </div>
+                @foreach($encuestas as $encuesta)
+                <div class="grid grid-cols-12 p-6">
+                    {{-- ingresar respuesta de pregunta abierta --}}
+                    <div class="col-span-10">
+                        <x-aaz href="{{ route('encuestas.show', $encuesta->id) }}" class="text-white bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded">
+                            {{ __($encuesta->name) }}
+                        </x-aaz>
                     </div>
-
-                    @foreach ($encuestas as $encuesta)
-                        {{-- Enlistado de encuestas --}}
-                        <div class="container">
-                            <div class="grid grid-cols-12 border-b-2 border-r-2 border-l-2 border-dashed">
-                                <div class="col-span-8 col-start-2">
-                                    <div class=" ">
-                                        <li><a href="{{ route('encuestas.show', $encuesta->id) }}">{{ $encuesta->name }}</a></li>
-                                    </div>
-                                </div>
-                                <div class="col-span-2 col-start-12">
-                                    <div class="">
-                                        <form action="{{ route('encuestas.cambiarEstado', $encuesta->id) }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="estado" value="0">
-                                            <button type="submit" class="bg-red-400 rounded-lg text-center">Desactivar</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                    <div class="col-span-2">
+                        <form action="{{ route('encuestas.cambiarEstado', $encuesta->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="estado" value="0">
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas desactivar la encuesta?')" class="px-4 py-2 text-sm font-bold bg-red-400 rounded-lg text-white">Desactivar</button>
+                        </form>
+                    </div>
+                    <div class="col-span-12 mt-4"> <!-- Nueva celda para el botón de exportar -->
+                        <a href="{{ route('encuestas.export', $encuesta->id) }}" class="text-white bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded">
+                            {{ __('Exportar') }}
+                        </a>
+                    </div>
                 </div>
+                
+                @endforeach
+
             </div>
         </div>
     </div>
-@endsection
-
-    
-
+</x-app-layout>

@@ -20,7 +20,7 @@
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();" 
                                 class="bg-slate-600 rounded-lg text-center">
-                            {{ __('Log Out') }} 
+                            {{ __('Cerrar Sesion') }} 
                         </x-dropdown-link>
                     </form>
                 </div>        

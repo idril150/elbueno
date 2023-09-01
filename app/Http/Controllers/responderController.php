@@ -10,8 +10,8 @@ class responderController extends Controller
 {
 
     public function index(){
-       // $user = auth()->user();
-       $encuestas = Encuesta::where('estado', 1)/*->where('carrera', $user->carrera)*/->orderBy('id', 'desc')->paginate();
+       $user = auth()->user();
+       $encuestas = Encuesta::where('estado', 1)->where('carrera', $user->carrera)->orderBy('id', 'desc')->paginate();
        return view('responders.index', compact('encuestas'));
        
     }
