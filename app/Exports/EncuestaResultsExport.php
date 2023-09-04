@@ -22,7 +22,11 @@ class EncuestaResultsExport implements FromView
     public function __construct(Encuesta $encuesta, $preguntas)
     {
         $this->encuesta = $encuesta;
-        $this->preguntas = $preguntas;
+        
+        // $this->preguntas = $preguntas;
+        $this->preguntas = $preguntas->filter(function ($pregunta) {
+            return $pregunta->estado == 1;
+        });
     }
 
     public function view(): View
